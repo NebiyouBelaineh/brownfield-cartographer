@@ -29,7 +29,7 @@ def _add_sql_lineage(lg: LineageGraph, repo_path: Path) -> None:
             continue
         rel = str(path.relative_to(repo_path)).replace("\\", "/")
         r = analyze_sql_file(path, source)
-        if r["errors"]:
+        if r["errors"] and not r["sources"]:
             continue
         lg.add_transformation(
             r["transform_id"],
@@ -37,6 +37,7 @@ def _add_sql_lineage(lg: LineageGraph, repo_path: Path) -> None:
             r["transformation_type"],
             source_datasets=r["sources"],
             target_datasets=r["targets"],
+            line_range=r.get("line_range"),
         )
 
 
@@ -133,16 +134,27 @@ def survey(
 
     lg = LineageGraph()
 
+    print(f"[Hydrologist] Building lineage graph for {repo_path} ...", flush=True)
     if include_sql:
+        print("[Hydrologist] Extracting SQL lineage ...", flush=True)
         _add_sql_lineage(lg, repo_path)
     if include_dbt:
+        print("[Hydrologist] Extracting dbt lineage ...", flush=True)
         _add_dbt_lineage(lg, repo_path)
     if include_airflow:
+        print("[Hydrologist] Extracting Airflow lineage ...", flush=True)
         _add_airflow_lineage(lg, repo_path)
     if include_python_flow:
+        print("[Hydrologist] Extracting Python data flow ...", flush=True)
         _add_python_data_flow(lg, repo_path)
 
     output_dir.mkdir(parents=True, exist_ok=True)
     lg.to_json(output_dir / "lineage_graph.json")
 
+    G = lg.graph
+    print(
+        f"[Hydrologist] Done: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges -> "
+        f"{output_dir / 'lineage_graph.json'}",
+        flush=True,
+    )
     return lg

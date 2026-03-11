@@ -10,6 +10,7 @@ from src.analyzers.tree_sitter_analyzer import (
     _extract_python_imports,
     analyze_module,
     extract_module_info,
+    ts_fallback_extract_sql_tables,
 )
 from src.models.nodes import ModuleNode
 
@@ -47,8 +48,8 @@ class TestLanguageRouter:
     def test_unknown_extension(self):
         assert self.router.get_language("script.rb") == "unknown"
 
-    def test_sql_is_unknown(self):
-        assert self.router.get_language("query.sql") == "unknown"
+    def test_sql_detected(self):
+        assert self.router.get_language("query.sql") == "sql"
 
     def test_supports_python(self):
         assert self.router.supports("foo.py") is True
@@ -56,8 +57,8 @@ class TestLanguageRouter:
     def test_supports_yaml(self):
         assert self.router.supports("config.yaml") is True
 
-    def test_not_supports_sql(self):
-        assert self.router.supports("query.sql") is False
+    def test_supports_sql(self):
+        assert self.router.supports("query.sql") is True
 
     def test_not_supports_ruby(self):
         assert self.router.supports("app.rb") is False
@@ -216,6 +217,40 @@ class TestExtractPythonFunctions:
         fns = self._parse(code)
         assert len(fns) == 3
 
+    def test_decorators_key_present(self):
+        code = "def plain(): pass\n"
+        fns = self._parse(code)
+        assert "decorators" in fns[0]
+        assert fns[0]["decorators"] == []
+
+    def test_single_decorator_extracted(self):
+        code = "@property\ndef value(self): pass\n"
+        fns = self._parse(code)
+        assert len(fns) == 1
+        assert any("property" in d for d in fns[0]["decorators"])
+
+    def test_multiple_decorators_extracted(self):
+        code = "@staticmethod\n@some_decorator\ndef fn(): pass\n"
+        fns = self._parse(code)
+        assert len(fns[0]["decorators"]) == 2
+
+    def test_call_decorator_extracted(self):
+        code = "@app.route('/path')\ndef view(): pass\n"
+        fns = self._parse(code)
+        assert len(fns) == 1
+        assert any("route" in d or "app" in d for d in fns[0]["decorators"])
+
+    def test_undecorated_function_has_empty_decorators(self):
+        code = "def no_decorator(): pass\n"
+        fns = self._parse(code)
+        assert fns[0]["decorators"] == []
+
+    def test_nested_function_decorators(self):
+        code = "def outer():\n    @staticmethod\n    def inner(): pass\n"
+        fns = self._parse(code)
+        inner = next(f for f in fns if f["name"] == "inner")
+        assert any("staticmethod" in d for d in inner["decorators"])
+
 
 # ---------------------------------------------------------------------------
 # _extract_python_classes
@@ -343,3 +378,55 @@ class TestExtractModuleInfo:
         names = [f["name"] for f in info["functions"]]
         assert "hello" in names
         assert "world" in names
+
+
+# ---------------------------------------------------------------------------
+# ts_fallback_extract_sql_tables
+# ---------------------------------------------------------------------------
+
+
+class TestTsFallbackExtractSqlTables:
+    def test_simple_from(self):
+        tables = ts_fallback_extract_sql_tables(b"SELECT * FROM orders")
+        assert "orders" in tables
+
+    def test_join_extracted(self):
+        sql = b"SELECT * FROM orders JOIN customers ON orders.id = customers.order_id"
+        tables = ts_fallback_extract_sql_tables(sql)
+        assert "orders" in tables
+        assert "customers" in tables
+
+    def test_cte_relations_included(self):
+        sql = b"WITH cte AS (SELECT id FROM source_tbl) SELECT * FROM cte JOIN other ON cte.id = other.id"
+        tables = ts_fallback_extract_sql_tables(sql)
+        # source_tbl, cte, and other are all `relation` nodes — all extracted
+        assert "source_tbl" in tables
+        assert "other" in tables
+
+    def test_schema_qualified_table(self):
+        sql = b"SELECT * FROM public.orders"
+        tables = ts_fallback_extract_sql_tables(sql)
+        assert any("orders" in t for t in tables)
+
+    def test_broken_sql_recovers_tables(self):
+        # sqlglot would fail on this; tree-sitter recovers partial relations
+        sql = b"SELECT * FROM orders JOIN customers ON MISSING BROKEN SYNTAX !@#$"
+        tables = ts_fallback_extract_sql_tables(sql)
+        assert "orders" in tables
+        assert "customers" in tables
+
+    def test_sql_keywords_not_returned(self):
+        # Even on broken SQL, reserved words should be filtered out
+        sql = b"SELECT * FROM foo WHERE bar"
+        tables = ts_fallback_extract_sql_tables(sql)
+        assert "WHERE" not in tables
+        assert "SELECT" not in tables
+        assert "FROM" not in tables
+
+    def test_empty_sql_returns_empty_set(self):
+        tables = ts_fallback_extract_sql_tables(b"")
+        assert tables == set()
+
+    def test_returns_set(self):
+        tables = ts_fallback_extract_sql_tables(b"SELECT * FROM foo")
+        assert isinstance(tables, set)

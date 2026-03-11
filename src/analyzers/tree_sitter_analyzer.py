@@ -5,6 +5,7 @@ from typing import Any
 
 import tree_sitter_javascript
 import tree_sitter_python
+import tree_sitter_sql
 import tree_sitter_typescript
 import tree_sitter_yaml
 from tree_sitter import Language, Node, Parser, Tree
@@ -13,7 +14,6 @@ from src.models import ModuleNode
 
 
 # Grammar registry: extension -> (Language, language_name)
-# Note: SQL is parsed by sqlglot in sql_lineage.py, not tree-sitter.
 _LANGUAGES: dict[str, tuple[Any, str]] = {
     ".py": (Language(tree_sitter_python.language()), "python"),
     ".yaml": (Language(tree_sitter_yaml.language()), "yaml"),
@@ -22,7 +22,55 @@ _LANGUAGES: dict[str, tuple[Any, str]] = {
     ".jsx": (Language(tree_sitter_javascript.language()), "javascript"),
     ".ts": (Language(tree_sitter_typescript.language_typescript()), "typescript"),
     ".tsx": (Language(tree_sitter_typescript.language_tsx()), "typescript"),
+    ".sql": (Language(tree_sitter_sql.language()), "sql"),
 }
+
+# SQL keywords that tree-sitter may mis-parse as table identifiers in broken SQL
+_SQL_KEYWORDS: frozenset[str] = frozenset({
+    "SELECT", "FROM", "WHERE", "JOIN", "ON", "AND", "OR", "NOT", "IN", "IS",
+    "NULL", "AS", "BY", "GROUP", "ORDER", "HAVING", "LIMIT", "OFFSET", "UNION",
+    "ALL", "INNER", "LEFT", "RIGHT", "OUTER", "FULL", "CROSS", "WITH", "INSERT",
+    "UPDATE", "DELETE", "CREATE", "DROP", "ALTER", "TABLE", "VIEW", "INDEX",
+    "SET", "INTO", "VALUES", "DISTINCT", "EXISTS", "BETWEEN", "LIKE", "CASE",
+    "WHEN", "THEN", "ELSE", "END", "OVER", "PARTITION", "ROWS", "RANGE",
+})
+
+
+def ts_fallback_extract_sql_tables(source: bytes) -> set[str]:
+    """
+    Fallback SQL table extractor using tree-sitter.
+
+    Called when sqlglot fails to parse a SQL file. Walks the tree-sitter AST
+    and collects all `object_reference` nodes that are direct children of
+    `relation` nodes (i.e. FROM/JOIN targets). SQL keywords are filtered out
+    to avoid false positives from error-recovery nodes.
+
+    Returns a set of table name strings (may include schema-qualified names
+    like 'schema.table'). Results are best-effort on malformed SQL.
+    """
+    lang = Language(tree_sitter_sql.language())
+    parser = Parser(lang)
+    tree = parser.parse(source)
+
+    tables: set[str] = set()
+
+    def _walk(node: Node) -> None:
+        if node.type == "relation":
+            for child in node.children:
+                if child.type == "object_reference":
+                    parts = [
+                        c.text.decode("utf-8", errors="replace")
+                        for c in child.children
+                        if c.type == "identifier"
+                    ]
+                    name = ".".join(parts)
+                    if name and name.upper() not in _SQL_KEYWORDS:
+                        tables.add(name)
+        for child in node.children:
+            _walk(child)
+
+    _walk(tree.root_node)
+    return tables
 
 
 class LanguageRouter:
@@ -111,22 +159,43 @@ def _extract_python_imports(tree: Tree, source: bytes) -> list[tuple[str, str | 
 
 
 def _extract_python_functions(tree: Tree, source: bytes) -> list[dict[str, Any]]:
-    """Extract function definitions: name, signature text, is_public."""
+    """Extract function definitions: name, signature text, decorators, is_public."""
     functions: list[dict[str, Any]] = []
 
+    def _process_function(n: Node, decorators: list[str]) -> None:
+        name_node = _find_child(n, "identifier")
+        if name_node:
+            name = _get_text(name_node, source)
+            params_node = _find_child(n, "parameters")
+            sig = _get_text(params_node, source) if params_node else "()"
+            functions.append({
+                "name": name,
+                "signature": sig,
+                "decorators": decorators,
+                "is_public_api": not name.startswith("_"),
+                "line_range": (n.start_point[0] + 1, n.end_point[0] + 1),
+            })
+        # Walk nested functions inside the body
+        body = _find_child(n, "block")
+        if body:
+            walk(body)
+
     def walk(n: Node) -> None:
+        if n.type == "decorated_definition":
+            # Collect all decorator texts, then process the inner function_definition
+            decs: list[str] = []
+            inner: Node | None = None
+            for c in n.children:
+                if c.type == "decorator":
+                    decs.append(_get_text(c, source).strip())
+                elif c.type == "function_definition":
+                    inner = c
+            if inner is not None:
+                _process_function(inner, decs)
+            return  # body already walked by _process_function
         if n.type == "function_definition":
-            name_node = _find_child(n, "identifier")
-            if name_node:
-                name = _get_text(name_node, source)
-                params_node = _find_child(n, "parameters")
-                sig = _get_text(params_node, source) if params_node else "()"
-                functions.append({
-                    "name": name,
-                    "signature": sig,
-                    "is_public_api": not name.startswith("_"),
-                    "line_range": (n.start_point[0] + 1, n.end_point[0] + 1),
-                })
+            _process_function(n, [])
+            return  # body already walked by _process_function
         for c in n.children:
             walk(c)
 

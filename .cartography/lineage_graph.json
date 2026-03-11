@@ -4,6 +4,56 @@
   "graph": {},
   "nodes": [
     {
+      "transform_id": "/home/neba/tenx/week4/airflow/providers/google/tests/system/google/cloud/bigquery/resources/example_bigquery_query.sql:example_bigquery_query",
+      "source_file": "providers/google/tests/system/google/cloud/bigquery/resources/example_bigquery_query.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "DATASET"
+      ],
+      "target_datasets": [
+        "example_bigquery_query"
+      ],
+      "id": "/home/neba/tenx/week4/airflow/providers/google/tests/system/google/cloud/bigquery/resources/example_bigquery_query.sql:example_bigquery_query"
+    },
+    {
+      "name": "example_bigquery_query",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "example_bigquery_query"
+    },
+    {
+      "name": "DATASET",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "DATASET"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/airflow/providers/teradata/tests/system/teradata/script.sql:script",
+      "source_file": "providers/teradata/tests/system/teradata/script.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "params.TABLE_NAME"
+      ],
+      "target_datasets": [
+        "script"
+      ],
+      "id": "/home/neba/tenx/week4/airflow/providers/teradata/tests/system/teradata/script.sql:script"
+    },
+    {
+      "name": "script",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "script"
+    },
+    {
+      "name": "params.TABLE_NAME",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "params.TABLE_NAME"
+    },
+    {
       "transform_id": "/home/neba/tenx/week4/airflow/airflow-core/src/airflow/example_dags/sql/tutorial_taskflow_template.sql:tutorial_taskflow_template",
       "source_file": "airflow-core/src/airflow/example_dags/sql/tutorial_taskflow_template.sql",
       "transformation_type": "sql",
@@ -4201,11 +4251,55 @@
   "edges": [
     {
       "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        20
+      ],
+      "source": "/home/neba/tenx/week4/airflow/providers/google/tests/system/google/cloud/bigquery/resources/example_bigquery_query.sql:example_bigquery_query",
+      "target": "example_bigquery_query"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        20
+      ],
+      "source": "DATASET",
+      "target": "/home/neba/tenx/week4/airflow/providers/google/tests/system/google/cloud/bigquery/resources/example_bigquery_query.sql:example_bigquery_query"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        29
+      ],
+      "source": "/home/neba/tenx/week4/airflow/providers/teradata/tests/system/teradata/script.sql:script",
+      "target": "script"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        29
+      ],
+      "source": "params.TABLE_NAME",
+      "target": "/home/neba/tenx/week4/airflow/providers/teradata/tests/system/teradata/script.sql:script"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        23
+      ],
       "source": "/home/neba/tenx/week4/airflow/airflow-core/src/airflow/example_dags/sql/tutorial_taskflow_template.sql:tutorial_taskflow_template",
       "target": "tutorial_taskflow_template"
     },
     {
       "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        23
+      ],
       "source": "test_data",
       "target": "/home/neba/tenx/week4/airflow/airflow-core/src/airflow/example_dags/sql/tutorial_taskflow_template.sql:tutorial_taskflow_template"
     },

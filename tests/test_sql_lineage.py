@@ -79,6 +79,28 @@ class TestExtractTableDependencies:
         result = extract_table_dependencies(sql)
         assert len(result["errors"]) > 0
 
+    def test_broken_sql_fallback_flag_set(self):
+        sql = "SELECT * FROM orders JOIN customers ON BROKEN !@#$"
+        result = extract_table_dependencies(sql)
+        assert result.get("_fallback") is True
+
+    def test_broken_sql_fallback_recovers_tables(self):
+        sql = "SELECT * FROM orders JOIN customers ON BROKEN !@#$"
+        result = extract_table_dependencies(sql)
+        assert "orders" in result["sources"]
+        assert "customers" in result["sources"]
+
+    def test_valid_sql_has_no_fallback_flag(self):
+        result = extract_table_dependencies("SELECT * FROM foo")
+        assert result.get("_fallback") is None
+
+    def test_broken_sql_still_has_error(self):
+        # Errors are preserved even when fallback succeeds
+        sql = "SELECT * FROM orders JOIN BROKEN !@#$"
+        result = extract_table_dependencies(sql)
+        assert len(result["errors"]) > 0
+        assert result.get("_fallback") is True
+
     def test_schema_qualified_table(self):
         sql = "SELECT * FROM public.orders"
         result = extract_table_dependencies(sql)
@@ -144,6 +166,28 @@ class TestAnalyzeSqlFile:
         result = analyze_sql_file("model.sql", sql)
         assert "raw" in result["sources"]
         assert "cte" not in result["sources"]
+
+    def test_line_range_present(self):
+        sql = "SELECT * FROM orders"
+        result = analyze_sql_file("orders.sql", sql)
+        assert "line_range" in result
+        assert isinstance(result["line_range"], tuple)
+        assert len(result["line_range"]) == 2
+
+    def test_line_range_start_is_one(self):
+        sql = "SELECT * FROM orders"
+        result = analyze_sql_file("orders.sql", sql)
+        assert result["line_range"][0] == 1
+
+    def test_line_range_end_matches_line_count(self):
+        sql = "SELECT *\nFROM orders\nJOIN customers ON orders.id = customers.id"
+        result = analyze_sql_file("orders.sql", sql)
+        assert result["line_range"][1] == 3
+
+    def test_line_range_present_on_broken_sql(self):
+        result = analyze_sql_file("bad.sql", "SELECT * FROM foo JOIN BROKEN !@#$")
+        assert "line_range" in result
+        assert result["line_range"][0] == 1
 
 
 # ---------------------------------------------------------------------------

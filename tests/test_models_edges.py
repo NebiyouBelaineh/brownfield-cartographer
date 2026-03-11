@@ -192,3 +192,78 @@ def test_transformation_node_full():
     )
     assert "raw_orders" in t.source_datasets
     assert "clean_orders" in t.target_datasets
+
+
+# ---------------------------------------------------------------------------
+# Field validators
+# ---------------------------------------------------------------------------
+
+
+class TestModuleNodeValidators:
+    def test_language_normalized_to_lowercase(self):
+        node = ModuleNode(path="foo.py", language="Python")
+        assert node.language == "python"
+
+    def test_language_mixed_case(self):
+        node = ModuleNode(path="foo.ts", language="TypeScript")
+        assert node.language == "typescript"
+
+    def test_negative_complexity_raises(self):
+        with pytest.raises(ValidationError):
+            ModuleNode(path="foo.py", language="python", complexity_score=-1.0)
+
+    def test_zero_complexity_ok(self):
+        node = ModuleNode(path="foo.py", language="python", complexity_score=0.0)
+        assert node.complexity_score == 0.0
+
+    def test_negative_velocity_raises(self):
+        with pytest.raises(ValidationError):
+            ModuleNode(path="foo.py", language="python", change_velocity_30d=-1)
+
+    def test_zero_velocity_ok(self):
+        node = ModuleNode(path="foo.py", language="python", change_velocity_30d=0)
+        assert node.change_velocity_30d == 0
+
+    def test_none_velocity_ok(self):
+        node = ModuleNode(path="foo.py", language="python", change_velocity_30d=None)
+        assert node.change_velocity_30d is None
+
+
+class TestFunctionNodeValidators:
+    def test_valid_line_range_ok(self):
+        fn = FunctionNode(qualified_name="m.f", parent_module="m.py", line_range=(1, 10))
+        assert fn.line_range == (1, 10)
+
+    def test_equal_start_end_ok(self):
+        fn = FunctionNode(qualified_name="m.f", parent_module="m.py", line_range=(5, 5))
+        assert fn.line_range == (5, 5)
+
+    def test_inverted_line_range_raises(self):
+        with pytest.raises(ValidationError):
+            FunctionNode(qualified_name="m.f", parent_module="m.py", line_range=(10, 5))
+
+    def test_none_line_range_ok(self):
+        fn = FunctionNode(qualified_name="m.f", parent_module="m.py")
+        assert fn.line_range is None
+
+
+class TestDatasetNodeValidators:
+    def test_valid_storage_types(self):
+        for st in ("table", "file", "stream", "api", "task"):
+            ds = DatasetNode(name="x", storage_type=st)
+            assert ds.storage_type == st
+
+    def test_invalid_storage_type_raises(self):
+        with pytest.raises(ValidationError):
+            DatasetNode(name="x", storage_type="database")
+
+
+class TestTransformationNodeValidators:
+    def test_valid_transformation_types(self):
+        for tt in ("sql", "dbt_model", "airflow_task", "python", "dbt"):
+            t = TransformationNode(transform_id="x", source_file="f", transformation_type=tt)
+            assert t.transformation_type == tt
+
+    def test_invalid_transformation_type_raises(self):
+        with pytest.raises(ValidationError):
+            TransformationNode(transform_id="x", source_file="f", transformation_type="spark")

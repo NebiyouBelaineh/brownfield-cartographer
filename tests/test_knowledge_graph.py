@@ -276,3 +276,35 @@ class TestLineageGraph:
         lg.add_transformation("t2", "f.py", "sql", source_datasets=["B"], target_datasets=["C"])
         assert "A" in lg.find_sources()
         assert "C" in lg.find_sinks()
+
+    def test_edge_line_range_on_produces(self):
+        lg = LineageGraph()
+        lg.add_transformation(
+            "t1", "etl.sql", "sql",
+            source_datasets=["raw"],
+            target_datasets=["clean"],
+            line_range=(1, 20),
+        )
+        edge_data = lg.graph["t1"]["clean"]
+        assert edge_data["line_range"] == (1, 20)
+
+    def test_edge_line_range_on_consumes(self):
+        lg = LineageGraph()
+        lg.add_transformation(
+            "t1", "etl.sql", "sql",
+            source_datasets=["raw"],
+            target_datasets=["clean"],
+            line_range=(5, 15),
+        )
+        edge_data = lg.graph["raw"]["t1"]
+        assert edge_data["line_range"] == (5, 15)
+
+    def test_edge_no_line_range_when_not_provided(self):
+        lg = LineageGraph()
+        lg.add_transformation(
+            "t1", "etl.py", "python",
+            source_datasets=["raw"],
+            target_datasets=["clean"],
+        )
+        assert "line_range" not in lg.graph["t1"]["clean"]
+        assert "line_range" not in lg.graph["raw"]["t1"]

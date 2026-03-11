@@ -128,6 +128,9 @@ def survey(
     velocity = extract_git_velocity(repo_path, days=days)
 
     # Analyze each file and build graph
+    total_files = len(files_to_analyze)
+    print(f"[Surveyor] Analyzing {total_files} files in {repo_path} ...", flush=True)
+    processed = 0
     for p in files_to_analyze:
         try:
             source = p.read_bytes()
@@ -152,6 +155,10 @@ def survey(
                 target = _resolve_import_simple(repo_path, p, mod, all_paths)
                 if target and target != rel:
                     mg.add_import(rel, target, weight=1)
+
+        processed += 1
+        if processed % 50 == 0:
+            print(f"[Surveyor] {processed}/{total_files} files processed ...", flush=True)
 
     # PageRank for architectural hubs (requires numpy/scipy; skip if unavailable)
     G = mg.graph
@@ -185,4 +192,9 @@ def survey(
     output_dir.mkdir(parents=True, exist_ok=True)
     mg.to_json(output_dir / "module_graph.json")
 
+    print(
+        f"[Surveyor] Done: {G.number_of_nodes()} modules, {G.number_of_edges()} edges -> "
+        f"{output_dir / 'module_graph.json'}",
+        flush=True,
+    )
     return mg

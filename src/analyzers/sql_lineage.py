@@ -6,6 +6,8 @@ from typing import Any
 import sqlglot
 from sqlglot import exp
 
+from src.analyzers.tree_sitter_analyzer import ts_fallback_extract_sql_tables
+
 # Dialects supported for parsing
 SUPPORTED_DIALECTS = (
     "postgres",
@@ -110,6 +112,11 @@ def extract_table_dependencies(
         parsed = sqlglot.parse_one(sql, dialect=dialect)
     except Exception as e:
         result["errors"].append(str(e))
+        # Fallback: use tree-sitter to extract table names from malformed SQL
+        raw = sql.encode() if isinstance(sql, str) else sql
+        fallback_tables = ts_fallback_extract_sql_tables(raw)
+        result["sources"] = fallback_tables
+        result["_fallback"] = True
         return result
 
     if not isinstance(parsed, exp.Select):
@@ -154,12 +161,15 @@ def analyze_sql_file(
         dialect: SQL dialect for parsing
 
     Returns:
-        Dict with sources, targets, transform_id, source_file, errors.
+        Dict with sources, targets, transform_id, source_file, line_range, errors.
         Suitable for feeding into LineageGraph.add_transformation().
     """
     path = Path(path)
     if isinstance(source, bytes):
         source = source.decode("utf-8", errors="replace")
+
+    total_lines = len(source.splitlines()) or 1
+    line_range = (1, total_lines)
 
     deps = extract_table_dependencies(source, dialect=dialect)
 
@@ -176,6 +186,7 @@ def analyze_sql_file(
         "sources": list(deps["sources"]),
         "targets": [output_name],  # This SQL file produces output_name (e.g. dbt model)
         "cte_map": deps.get("cte_map", {}),
+        "line_range": line_range,
         "errors": deps.get("errors", []),
         "transformation_type": "sql",
     }

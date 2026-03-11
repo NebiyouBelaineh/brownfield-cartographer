@@ -130,9 +130,13 @@ class LineageGraph:
         transformation_type: str,
         source_datasets: list[str] | None = None,
         target_datasets: list[str] | None = None,
+        line_range: tuple[int, int] | None = None,
         **attrs: Any,
     ) -> None:
-        """Add a transformation node. Links to datasets via PRODUCES/CONSUMES."""
+        """Add a transformation node. Links to datasets via PRODUCES/CONSUMES.
+
+        line_range: (start_line, end_line) in source_file where available; attached to edges.
+        """
         if not self._G.has_node(transform_id):
             self._G.add_node(
                 transform_id,
@@ -144,14 +148,16 @@ class LineageGraph:
                 target_datasets=target_datasets or [],
                 **attrs,
             )
+        # Build optional line_range edge attribute
+        lr_attr: dict[str, Any] = {"line_range": line_range} if line_range is not None else {}
         # Add PRODUCES edges to target datasets
         for target in target_datasets or []:
-            self.add_dataset(target, "table")  # default storage_type
-            self._G.add_edge(transform_id, target, **edge_attrs(EdgeType.PRODUCES))
+            self.add_dataset(target, "table")
+            self._G.add_edge(transform_id, target, **edge_attrs(EdgeType.PRODUCES), **lr_attr)
         # Add CONSUMES edges from source datasets
         for source in source_datasets or []:
             self.add_dataset(source, "table")
-            self._G.add_edge(source, transform_id, **edge_attrs(EdgeType.CONSUMES))
+            self._G.add_edge(source, transform_id, **edge_attrs(EdgeType.CONSUMES), **lr_attr)
 
     def blast_radius(self, node: str) -> set[str]:
         """Return all nodes downstream of node (BFS)."""
