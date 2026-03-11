@@ -100,6 +100,45 @@ print(lg.blast_radius("some_task_or_dataset"))
 
 ---
 
+## Testing
+
+Install dev dependencies first:
+
+```bash
+uv sync --extra dev
+```
+
+Run all tests:
+
+```bash
+uv run pytest tests/ -v
+```
+
+Run a specific test file:
+
+```bash
+uv run pytest tests/test_sql_lineage.py -v
+```
+
+Filter by keyword:
+
+```bash
+uv run pytest tests/ -k "cte"
+```
+
+### Test coverage
+
+| File | Module tested |
+|------|--------------|
+| `tests/test_models_edges.py` | `src/models/edges.py`, `src/models/nodes.py` — edge types, node schemas, `edge_attrs()` |
+| `tests/test_knowledge_graph.py` | `src/graph/knowledge_graph.py` — `ModuleGraph`, `LineageGraph`, blast radius, serialization |
+| `tests/test_sql_lineage.py` | `src/analyzers/sql_lineage.py` — CTE resolution, JOIN parsing, multi-dialect, directory scanning |
+| `tests/test_python_data_flow.py` | `src/analyzers/python_data_flow.py` — pandas, PySpark, SQLAlchemy read/write detection |
+| `tests/test_dag_config_parser.py` | `src/analyzers/dag_config_parser.py` — dbt schema/project YAML, Airflow DAG task/dependency extraction |
+| `tests/test_tree_sitter_analyzer.py` | `src/analyzers/tree_sitter_analyzer.py` — `LanguageRouter`, Python import/function/class extraction, `analyze_module` |
+
+---
+
 ## Dependencies
 
 All dependencies are locked in `uv.lock`. No LLM API keys or external services are required
