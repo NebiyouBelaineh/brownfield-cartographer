@@ -1,0 +1,206 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "path": "packages.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "packages.yml"
+    },
+    {
+      "path": "Taskfile.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "Taskfile.yml"
+    },
+    {
+      "path": "package-lock.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "package-lock.yml"
+    },
+    {
+      "path": "dbt_project.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "dbt_project.yml"
+    },
+    {
+      "path": ".github/workflows/cd_prod.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": ".github/workflows/cd_prod.yml"
+    },
+    {
+      "path": ".github/workflows/cd_staging.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": ".github/workflows/cd_staging.yml"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": ".github/workflows/ci.yml"
+    },
+    {
+      "path": "models/staging/stg_customers.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/staging/stg_customers.yml"
+    },
+    {
+      "path": "models/staging/stg_products.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/staging/stg_products.yml"
+    },
+    {
+      "path": "models/staging/stg_locations.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/staging/stg_locations.yml"
+    },
+    {
+      "path": "models/staging/stg_supplies.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/staging/stg_supplies.yml"
+    },
+    {
+      "path": "models/staging/stg_orders.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/staging/stg_orders.yml"
+    },
+    {
+      "path": "models/staging/stg_order_items.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/staging/stg_order_items.yml"
+    },
+    {
+      "path": "models/staging/__sources.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/staging/__sources.yml"
+    },
+    {
+      "path": "models/marts/order_items.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/marts/order_items.yml"
+    },
+    {
+      "path": "models/marts/products.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/marts/products.yml"
+    },
+    {
+      "path": "models/marts/supplies.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/marts/supplies.yml"
+    },
+    {
+      "path": "models/marts/locations.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/marts/locations.yml"
+    },
+    {
+      "path": "models/marts/customers.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/marts/customers.yml"
+    },
+    {
+      "path": "models/marts/orders.yml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "models/marts/orders.yml"
+    },
+    {
+      "path": ".github/workflows/scripts/dbt_cloud_run_job.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": ".github/workflows/scripts/dbt_cloud_run_job.py"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": ".pre-commit-config.yaml"
+    }
+  ],
+  "edges": []
+}
