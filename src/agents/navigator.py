@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Any
 
 import networkx as nx
+from langsmith import traceable
 
 from src.graph import LineageGraph, ModuleGraph
 from src.llm_config import LLMConfig, chat_completion, chat_completion_tiered, load_config
@@ -58,6 +59,7 @@ def _cosine_similarity(a: list[float], b: list[float]) -> float:
 # Tool implementations (pure graph / static analysis — no LLM required)
 # ---------------------------------------------------------------------------
 
+@traceable(name="tool.find_implementation")
 def find_implementation(
     concept: str,
     module_graph: ModuleGraph,
@@ -154,6 +156,7 @@ def find_implementation(
     return results
 
 
+@traceable(name="tool.trace_lineage")
 def trace_lineage(
     dataset: str,
     direction: str,
@@ -222,6 +225,7 @@ def trace_lineage(
     }
 
 
+@traceable(name="tool.blast_radius")
 def blast_radius(
     module_path: str,
     module_graph: ModuleGraph,
@@ -266,6 +270,7 @@ def blast_radius(
     }
 
 
+@traceable(name="tool.explain_module")
 def explain_module(
     path: str,
     repo_path: str | Path,
@@ -455,6 +460,7 @@ class Navigator:
             )
         return {"error": f"Unknown tool: {name}"}
 
+    @traceable(name="Navigator.query")
     def query(self, user_question: str, *, max_tool_rounds: int = 3) -> str:
         """Process a user question, calling tools as needed, and return a final answer.
 
