@@ -359,7 +359,7 @@ def embed_and_cluster(
         Dict mapping module path → domain label string.
     """
     if not _SKLEARN_AVAILABLE:
-        logger.info("[Semanticist] sklearn unavailable — falling back to LLM classification.")
+        print("[Semanticist] WARNING: scikit-learn not installed — falling back to per-module LLM classification (no embeddings).", flush=True)
         return cluster_into_domains(modules, config=config, budget=budget)
 
     # Collect modules that have a usable purpose statement
@@ -370,6 +370,7 @@ def embed_and_cluster(
     }
 
     if len(purpose_map) < 2:
+        print(f"[Semanticist] WARNING: Only {len(purpose_map)} module(s) have purpose statements — falling back to LLM classification (need ≥2 for embeddings).", flush=True)
         return cluster_into_domains(modules, config=config, budget=budget)
 
     paths = list(purpose_map.keys())
@@ -388,9 +389,11 @@ def embed_and_cluster(
     missing_texts = [purpose_map[p] for p in missing_paths]
 
     if missing_texts:
+        model_used = embedding_model or config.model
+        print(f"[Semanticist] Generating embeddings for {len(missing_texts)} modules using '{model_used}' ...", flush=True)
         new_vecs = generate_embeddings(missing_texts, config=config, embedding_model=embedding_model)
         if new_vecs is None:
-            logger.warning("[Semanticist] Embedding failed — falling back to LLM classification.")
+            print(f"[Semanticist] WARNING: Embedding call failed for model '{model_used}' — falling back to per-module LLM classification.", flush=True)
             return cluster_into_domains(modules, config=config, budget=budget)
         for p, vec in zip(missing_paths, new_vecs):
             cached[p] = vec

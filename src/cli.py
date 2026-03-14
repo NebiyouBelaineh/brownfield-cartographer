@@ -14,6 +14,9 @@ from pathlib import Path
 
 def main() -> int:
     """Entry point for the cartographer CLI."""
+    from src.llm_config import _load_dotenv
+    _load_dotenv()
+
     parser = argparse.ArgumentParser(
         prog="cartographer",
         description="Brownfield Cartographer — map codebase architecture and data lineage.",

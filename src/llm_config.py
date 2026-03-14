@@ -42,6 +42,30 @@ _DEFAULT_CONFIG_PATHS = [
     Path.home() / ".cartographer.toml",
 ]
 
+_DEFAULT_ENV_PATHS = [Path(".env"), Path.home() / ".env"]
+
+
+def _load_dotenv() -> None:
+    """Load .env file into os.environ if python-dotenv is available, else parse manually."""
+    for env_path in _DEFAULT_ENV_PATHS:
+        if not env_path.exists():
+            continue
+        try:
+            from dotenv import load_dotenv  # type: ignore[import]
+            load_dotenv(env_path, override=False)
+        except ImportError:
+            # Manual minimal parser: KEY=VALUE lines, ignores comments and blank lines
+            for line in env_path.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, _, value = line.partition("=")
+                key = key.strip()
+                value = value.strip().strip('"').strip("'")
+                if key and key not in os.environ:
+                    os.environ[key] = value
+        break
+
 # litellm model prefix for ollama
 _OLLAMA_PREFIX = "ollama/"
 
@@ -106,8 +130,14 @@ class LLMConfig:
 
     @property
     def expensive_litellm_model(self) -> str:
-        """Model to use for high-quality synthesis calls (defaults to primary model)."""
-        return self._to_litellm_model(self.cloud_model or self.model)
+        """Model to use for high-quality synthesis calls (defaults to primary model).
+
+        Cloud models (cloud_model field) are passed as-is so litellm routes them
+        to the correct provider (Anthropic, OpenAI, etc.) without the ollama/ prefix.
+        """
+        if self.cloud_model:
+            return self.cloud_model
+        return self._to_litellm_model(self.model)
 
     @property
     def litellm_kwargs(self) -> dict[str, Any]:
@@ -260,7 +290,10 @@ def chat_completion_tiered(
 
     model_str = config.cheap_litellm_model if tier == "cheap" else config.expensive_litellm_model
     kw: dict[str, Any] = {"model": model_str}
-    if config.provider == "ollama" and config.base_url:
+    # Add Ollama api_base only when the selected model is actually routed through Ollama.
+    # Cloud models (tier="expensive" with cloud_model set) bypass Ollama entirely.
+    using_cloud = tier == "expensive" and config.cloud_model
+    if config.provider == "ollama" and config.base_url and not using_cloud:
         kw["api_base"] = config.base_url
     kw.update(config.extra)
     kw.update(override_kwargs)

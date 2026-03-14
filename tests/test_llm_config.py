@@ -225,7 +225,8 @@ class TestLLMConfigTiering:
 
         assert result == "cloud answer"
         call_kwargs = mock_completion.call_args[1]
-        assert call_kwargs["model"] == "ollama/big-model"
+        assert call_kwargs["model"] == "big-model"
+        assert "api_base" not in call_kwargs
 
     def test_load_config_reads_tiered_models(self, tmp_path, monkeypatch):
         toml_content = (
