@@ -31,6 +31,7 @@ except ImportError:
 # ---------------------------------------------------------------------------
 
 _MAX_CODE_CHARS = 6_000  # truncate large files before sending to LLM
+_LARGE_REPO_THRESHOLD = 100  # Python modules; above this, escalate to expensive model
 
 
 def _truncate_code(code: str, max_chars: int = _MAX_CODE_CHARS) -> str:
@@ -557,6 +558,21 @@ Module purpose index:
 
 
 # ---------------------------------------------------------------------------
+# Config escalation
+# ---------------------------------------------------------------------------
+
+def _build_cloud_config(config: LLMConfig) -> LLMConfig:
+    """Return a new LLMConfig using cloud_model as the primary model.
+
+    The provider is inferred from the model name so litellm routes correctly
+    (avoids the ollama/ prefix being added to cloud model names).
+    """
+    model = config.cloud_model or config.model
+    provider = "anthropic" if model.startswith("claude") else "openai"
+    return LLMConfig(provider=provider, model=model, base_url="", extra=config.extra)
+
+
+# ---------------------------------------------------------------------------
 # Main entry point
 # ---------------------------------------------------------------------------
 
@@ -600,6 +616,17 @@ def analyse(
         and G.nodes[n].get("language") == "python"
     ]
 
+    # Escalate to expensive (cloud) model for large repos
+    threshold = config.large_repo_threshold
+    effective_config = config
+    if len(python_modules) > threshold and config.cloud_model:
+        print(
+            f"[Semanticist] Large repo ({len(python_modules)} Python modules > {threshold}) "
+            f"— escalating to {config.cloud_model} ...",
+            flush=True,
+        )
+        effective_config = _build_cloud_config(config)
+
     purpose_statements: dict[str, str] = {}
     doc_drift: dict[str, dict[str, Any]] = {}
 
@@ -612,7 +639,7 @@ def analyse(
             if not code.strip():
                 continue
 
-            purpose = generate_purpose_statement(mod_path, code, config=config, budget=budget)
+            purpose = generate_purpose_statement(mod_path, code, config=effective_config, budget=budget)
             purpose_statements[mod_path] = purpose
 
             # Update the graph node in place
@@ -621,7 +648,7 @@ def analyse(
 
             # Doc drift
             docstring = _extract_docstring(code)
-            drift = detect_doc_drift(mod_path, purpose, docstring, config=config, budget=budget)
+            drift = detect_doc_drift(mod_path, purpose, docstring, config=effective_config, budget=budget)
             doc_drift[mod_path] = drift
             if drift["has_drift"]:
                 if G.has_node(mod_path):
@@ -637,9 +664,9 @@ def analyse(
     ]
     domain_clusters = embed_and_cluster(
         modules_for_clustering,
-        config=config,
+        config=effective_config,
         output_dir=output_dir,
-        embedding_model=embedding_model,
+        embedding_model=embedding_model or config.embedding_model,
         budget=budget,
     )
     for mod_path, domain in domain_clusters.items():
@@ -648,7 +675,7 @@ def analyse(
 
     print("[Semanticist] Answering Five FDE Day-One Questions (expensive tier) ...", flush=True)
     day_one_answers = answer_day_one_questions(
-        module_graph, lineage_graph, config=config, budget=budget
+        module_graph, lineage_graph, config=effective_config, budget=budget
     )
 
     output_dir.mkdir(parents=True, exist_ok=True)

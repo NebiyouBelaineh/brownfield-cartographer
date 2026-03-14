@@ -82,7 +82,12 @@ class LLMConfig:
     # Model tiering: cheap for bulk calls, expensive for synthesis.
     # Default None means "use the primary model" for both tiers.
     cheap_model: str | None = None
-    expensive_model: str | None = None
+    cloud_model: str | None = None
+    # Module count above which the expensive model is used instead of local Ollama.
+    large_repo_threshold: int = 100
+    # Dedicated embedding model (e.g. "nomic-embed-text" for Ollama).
+    # Falls back to primary model if None, which only works if that model supports embeddings.
+    embedding_model: str | None = None
 
     def _to_litellm_model(self, model_name: str) -> str:
         if self.provider == "ollama" and not model_name.startswith(_OLLAMA_PREFIX):
@@ -102,7 +107,7 @@ class LLMConfig:
     @property
     def expensive_litellm_model(self) -> str:
         """Model to use for high-quality synthesis calls (defaults to primary model)."""
-        return self._to_litellm_model(self.expensive_model or self.model)
+        return self._to_litellm_model(self.cloud_model or self.model)
 
     @property
     def litellm_kwargs(self) -> dict[str, Any]:
@@ -161,10 +166,14 @@ def load_config(config_path: str | Path | None = None) -> LLMConfig:
         cfg.base_url = llm_section["base_url"]
     if llm_section.get("cheap_model"):
         cfg.cheap_model = llm_section["cheap_model"]
-    if llm_section.get("expensive_model"):
-        cfg.expensive_model = llm_section["expensive_model"]
+    if llm_section.get("cloud_model"):
+        cfg.cloud_model = llm_section["cloud_model"]
+    if llm_section.get("large_repo_threshold") is not None:
+        cfg.large_repo_threshold = int(llm_section["large_repo_threshold"])
     # Any extra keys in [llm] are forwarded as litellm kwargs
-    known = {"provider", "model", "base_url", "cheap_model", "expensive_model"}
+    if llm_section.get("embedding_model"):
+        cfg.embedding_model = llm_section["embedding_model"]
+    known = {"provider", "model", "base_url", "cheap_model", "cloud_model", "large_repo_threshold", "embedding_model"}
     cfg.extra = {k: v for k, v in llm_section.items() if k not in known}
 
     # Environment variable overrides
@@ -174,6 +183,17 @@ def load_config(config_path: str | Path | None = None) -> LLMConfig:
         cfg.model = os.environ["CARTOGRAPHER_LLM_MODEL"]
     if os.environ.get("CARTOGRAPHER_LLM_BASE_URL"):
         cfg.base_url = os.environ["CARTOGRAPHER_LLM_BASE_URL"]
+    if os.environ.get("CARTOGRAPHER_LLM_CHEAP_MODEL"):
+        cfg.cheap_model = os.environ["CARTOGRAPHER_LLM_CHEAP_MODEL"]
+    if os.environ.get("CARTOGRAPHER_LLM_CLOUD_MODEL"):
+        cfg.cloud_model = os.environ["CARTOGRAPHER_LLM_CLOUD_MODEL"]
+    if os.environ.get("CARTOGRAPHER_EMBEDDING_MODEL"):
+        cfg.embedding_model = os.environ["CARTOGRAPHER_EMBEDDING_MODEL"]
+    if os.environ.get("CARTOGRAPHER_LARGE_REPO_THRESHOLD"):
+        try:
+            cfg.large_repo_threshold = int(os.environ["CARTOGRAPHER_LARGE_REPO_THRESHOLD"])
+        except ValueError:
+            pass
 
     return cfg
 
@@ -222,7 +242,7 @@ def chat_completion_tiered(
     """Call the LLM using the cheap or expensive model tier.
 
     For local Ollama deployments both tiers default to the same model (cost is
-    negligible). Cloud deployments can set cheap_model / expensive_model in
+    negligible). Deployments can set cheap_model / cloud_model in
     cartographer.toml to route bulk vs synthesis calls to different models.
 
     Args:

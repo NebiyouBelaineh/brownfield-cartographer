@@ -190,7 +190,7 @@ class TestLLMConfigTiering:
         cfg = LLMConfig(provider="ollama", model="qwen2.5-coder:7b")
         assert cfg.cheap_litellm_model == "ollama/qwen2.5-coder:7b"
 
-    def test_expensive_model_defaults_to_primary(self):
+    def test_cloud_model_defaults_to_primary(self):
         cfg = LLMConfig(provider="ollama", model="qwen2.5-coder:7b")
         assert cfg.expensive_litellm_model == "ollama/qwen2.5-coder:7b"
 
@@ -213,27 +213,29 @@ class TestLLMConfigTiering:
         call_kwargs = mock_completion.call_args[1]
         assert call_kwargs["model"] == "ollama/small-model"
 
-    def test_tiered_call_uses_expensive_model(self):
+    def test_tiered_call_uses_cloud_model(self):
         mock_response = MagicMock()
-        mock_response.choices[0].message.content = "expensive answer"
-        cfg = LLMConfig(provider="ollama", model="small-model", expensive_model="big-model")
+        mock_response.choices[0].message.content = "cloud answer"
+        cfg = LLMConfig(provider="ollama", model="small-model", cloud_model="big-model")
 
         with patch("litellm.completion", return_value=mock_response) as mock_completion:
             result = chat_completion_tiered(
                 [{"role": "user", "content": "hi"}], tier="expensive", config=cfg
             )
 
-        assert result == "expensive answer"
+        assert result == "cloud answer"
         call_kwargs = mock_completion.call_args[1]
         assert call_kwargs["model"] == "ollama/big-model"
 
-    def test_load_config_reads_tiered_models(self, tmp_path):
+    def test_load_config_reads_tiered_models(self, tmp_path, monkeypatch):
         toml_content = (
             b'[llm]\nprovider = "ollama"\nmodel = "llama3"\n'
-            b'cheap_model = "qwen2.5-coder:3b"\nexpensive_model = "qwen2.5-coder:32b"\n'
+            b'cheap_model = "qwen2.5-coder:3b"\ncloud_model = "qwen2.5-coder:32b"\n'
         )
         config_file = tmp_path / "cartographer.toml"
         config_file.write_bytes(toml_content)
+        monkeypatch.delenv("CARTOGRAPHER_LLM_CHEAP_MODEL", raising=False)
+        monkeypatch.delenv("CARTOGRAPHER_LLM_CLOUD_MODEL", raising=False)
         cfg = load_config(config_path=config_file)
         assert cfg.cheap_model == "qwen2.5-coder:3b"
-        assert cfg.expensive_model == "qwen2.5-coder:32b"
+        assert cfg.cloud_model == "qwen2.5-coder:32b"
