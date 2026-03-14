@@ -228,6 +228,17 @@ def load_config(config_path: str | Path | None = None) -> LLMConfig:
     return cfg
 
 
+def build_cloud_config(config: LLMConfig) -> LLMConfig:
+    """Return a new LLMConfig that routes directly to the cloud model.
+
+    The provider is inferred from the model name so litellm routes correctly
+    (avoids the ollama/ prefix being added to cloud model names).
+    """
+    model = config.cloud_model or config.model
+    provider = "anthropic" if model.startswith("claude") else "openai"
+    return LLMConfig(provider=provider, model=model, base_url="", extra=config.extra)
+
+
 def chat_completion(
     messages: list[dict[str, str]],
     config: LLMConfig | None = None,

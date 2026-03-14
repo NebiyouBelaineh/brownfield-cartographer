@@ -169,9 +169,11 @@ def _cmd_analyze(args: argparse.Namespace) -> int:
 
         semantic = result.get("semantic_results", {})
         if semantic:
-            purposes = len(semantic.get("purpose_statements", {}))
+            all_stmts = semantic.get("purpose_statements", {})
+            purposes = sum(1 for v in all_stmts.values() if v and not v.startswith("[LLM error"))
+            errors = sum(1 for v in all_stmts.values() if v and v.startswith("[LLM error"))
             drifts = sum(1 for d in semantic.get("doc_drift", {}).values() if d.get("has_drift"))
-            print(f"  Purpose stmts: {purposes}")
+            print(f"  Purpose stmts: {purposes} ({errors} LLM errors)" if errors else f"  Purpose stmts: {purposes}")
             print(f"  Doc drift:     {drifts} modules")
 
         return 0

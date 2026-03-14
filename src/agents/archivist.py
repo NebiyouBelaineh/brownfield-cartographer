@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Any
 
 from src.graph import LineageGraph, ModuleGraph
-from src.llm_config import LLMConfig, chat_completion, load_config
+from src.llm_config import LLMConfig, build_cloud_config, chat_completion, load_config
 
 
 # ---------------------------------------------------------------------------
@@ -355,6 +355,20 @@ def archive(
 
     if config is None:
         config = load_config(config_path)
+
+    # Escalate to cloud model for large repos (same threshold as Semanticist)
+    python_modules = [
+        n for n in module_graph.graph.nodes()
+        if module_graph.graph.nodes[n].get("node_type") == "module"
+        and module_graph.graph.nodes[n].get("language") == "python"
+    ]
+    if len(python_modules) > config.large_repo_threshold and config.cloud_model:
+        print(
+            f"[Archivist] Large repo ({len(python_modules)} Python modules > {config.large_repo_threshold})"
+            f" — escalating to {config.cloud_model} ...",
+            flush=True,
+        )
+        config = build_cloud_config(config)
 
     trace_path = output_dir / "cartography_trace.jsonl"
     if trace_logger is None:

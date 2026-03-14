@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any
 
 from src.graph import LineageGraph, ModuleGraph
-from src.llm_config import LLMConfig, TokenBudget, chat_completion, chat_completion_tiered, load_config
+from src.llm_config import LLMConfig, TokenBudget, build_cloud_config, chat_completion, chat_completion_tiered, load_config
 
 logger = logging.getLogger(__name__)
 
@@ -560,20 +560,6 @@ Module purpose index:
     return answers
 
 
-# ---------------------------------------------------------------------------
-# Config escalation
-# ---------------------------------------------------------------------------
-
-def _build_cloud_config(config: LLMConfig) -> LLMConfig:
-    """Return a new LLMConfig using cloud_model as the primary model.
-
-    The provider is inferred from the model name so litellm routes correctly
-    (avoids the ollama/ prefix being added to cloud model names).
-    """
-    model = config.cloud_model or config.model
-    provider = "anthropic" if model.startswith("claude") else "openai"
-    return LLMConfig(provider=provider, model=model, base_url="", extra=config.extra)
-
 
 # ---------------------------------------------------------------------------
 # Main entry point
@@ -628,7 +614,7 @@ def analyse(
             f"— escalating to {config.cloud_model} ...",
             flush=True,
         )
-        effective_config = _build_cloud_config(config)
+        effective_config = build_cloud_config(config)
 
     purpose_statements: dict[str, str] = {}
     doc_drift: dict[str, dict[str, Any]] = {}
