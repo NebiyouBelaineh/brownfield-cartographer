@@ -481,9 +481,13 @@ class Navigator:
             {"role": "user", "content": user_question},
         ]
 
-        # Cheap model (qwen/local) handles tool-calling rounds — it only needs to
-        # select tools and form arguments, not produce polished prose.
-        kw = {**self.config.litellm_kwargs}
+        # Expensive model (haiku/sonnet) handles all Navigator interactions —
+        # tool selection, argument formation, and final synthesis.
+        _using_cloud = bool(self.config.cloud_model)
+        kw: dict[str, Any] = {"model": self.config.expensive_litellm_model}
+        if self.config.provider == "ollama" and self.config.base_url and not _using_cloud:
+            kw["api_base"] = self.config.base_url
+        kw.update(self.config.extra)
 
         tool_calls_made = False
         for _round in range(max_tool_rounds):
@@ -533,7 +537,7 @@ class Navigator:
             "content": "Please synthesise a final answer based on the tool results above.",
         })
         try:
-            return chat_completion_tiered(messages, tier="expensive", config=self.config)
+            return chat_completion_tiered(messages, tier="expensive", config=self.config, tools=_TOOLS)
         except Exception as exc:
             return f"[Navigator error: {exc}]"
 
