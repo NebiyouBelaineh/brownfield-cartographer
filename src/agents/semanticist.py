@@ -653,7 +653,7 @@ def analyse(
     ]
     domain_clusters = embed_and_cluster(
         modules_for_clustering,
-        config=effective_config,
+        config=config,
         output_dir=output_dir,
         embedding_model=embedding_model or config.embedding_model,
         budget=budget,
