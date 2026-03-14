@@ -10,3 +10,9 @@
 {"timestamp": "2026-03-13T17:57:37.994122+00:00", "agent": "Orchestrator", "action": "stage_start", "confidence": "high", "evidence_source": "static_analysis", "details": {"stage": "Hydrologist"}}
 {"timestamp": "2026-03-13T17:57:54.332079+00:00", "agent": "Hydrologist", "action": "survey_complete", "confidence": "high", "evidence_source": "static_analysis", "details": {"lineage_nodes": 436, "lineage_edges": 465}}
 {"timestamp": "2026-03-13T17:57:54.332283+00:00", "agent": "Orchestrator", "action": "stage_start", "confidence": "high", "evidence_source": "static_analysis", "details": {"stage": "Semanticist"}}
+{"timestamp": "2026-03-13T18:25:36.088904+00:00", "agent": "Orchestrator", "action": "pipeline_start", "confidence": "high", "evidence_source": "static_analysis", "details": {"repo_path": "/home/neba/tenx/week4/repos/airflow", "output_dir": ".cartography/airflow", "run_llm": true, "incremental": false}}
+{"timestamp": "2026-03-13T18:25:36.094365+00:00", "agent": "Orchestrator", "action": "stage_start", "confidence": "high", "evidence_source": "static_analysis", "details": {"stage": "Surveyor"}}
+{"timestamp": "2026-03-13T18:26:58.124105+00:00", "agent": "Surveyor", "action": "survey_complete", "confidence": "high", "evidence_source": "static_analysis", "details": {"modules": 8017, "edges": 12608}}
+{"timestamp": "2026-03-13T18:26:58.124275+00:00", "agent": "Orchestrator", "action": "stage_start", "confidence": "high", "evidence_source": "static_analysis", "details": {"stage": "Hydrologist"}}
+{"timestamp": "2026-03-13T18:27:15.188467+00:00", "agent": "Hydrologist", "action": "survey_complete", "confidence": "high", "evidence_source": "static_analysis", "details": {"lineage_nodes": 436, "lineage_edges": 465}}
+{"timestamp": "2026-03-13T18:27:15.188734+00:00", "agent": "Orchestrator", "action": "stage_start", "confidence": "high", "evidence_source": "static_analysis", "details": {"stage": "Semanticist"}}
