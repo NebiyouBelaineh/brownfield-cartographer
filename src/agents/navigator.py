@@ -20,7 +20,7 @@ from typing import Any
 import networkx as nx
 
 from src.graph import LineageGraph, ModuleGraph
-from src.llm_config import LLMConfig, chat_completion, load_config
+from src.llm_config import LLMConfig, chat_completion, chat_completion_tiered, load_config
 
 logger = logging.getLogger(__name__)
 
@@ -481,8 +481,11 @@ class Navigator:
             {"role": "user", "content": user_question},
         ]
 
+        # Cheap model (qwen/local) handles tool-calling rounds — it only needs to
+        # select tools and form arguments, not produce polished prose.
         kw = {**self.config.litellm_kwargs}
 
+        tool_calls_made = False
         for _round in range(max_tool_rounds):
             try:
                 response = litellm.completion(
@@ -500,9 +503,13 @@ class Navigator:
             tool_calls = getattr(msg, "tool_calls", None) or []
 
             if not tool_calls:
-                # Final answer
-                return msg.content or "(no response)"
+                if not tool_calls_made:
+                    # No tools used at all — return cheap model's answer directly
+                    return msg.content or "(no response)"
+                # Tools were used in prior rounds — break and re-synthesise
+                break
 
+            tool_calls_made = True
             # Execute tool calls
             messages.append(msg.model_dump() if hasattr(msg, "model_dump") else dict(msg))
             for tc in tool_calls:
@@ -519,14 +526,14 @@ class Navigator:
                     "content": json.dumps(tool_result, default=str),
                 })
 
-        # If we exhausted tool rounds, ask for a final answer
+        # Final synthesis — use expensive model (haiku/sonnet if configured) so the
+        # answer is polished prose with correct evidence citations, not raw JSON.
         messages.append({
             "role": "user",
             "content": "Please synthesise a final answer based on the tool results above.",
         })
         try:
-            response = litellm.completion(messages=messages, **kw)
-            return response.choices[0].message.content or "(no response)"
+            return chat_completion_tiered(messages, tier="expensive", config=self.config)
         except Exception as exc:
             return f"[Navigator error: {exc}]"
 
@@ -585,7 +592,7 @@ class Navigator:
                 "content": f"Question: {question}\n\nTool results:\n{context}",
             },
         ]
-        return chat_completion(messages, config=self.config, max_tokens=512)
+        return chat_completion_tiered(messages, tier="expensive", config=self.config, max_tokens=512)
 
     def interactive(self) -> None:
         """Start an interactive REPL for querying the knowledge graph."""
