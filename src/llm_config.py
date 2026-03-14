@@ -249,6 +249,7 @@ def chat_completion(
         The assistant message content as a string.
     """
     import litellm  # noqa: PLC0415
+    litellm.suppress_debug_info = True
 
     if config is None:
         config = load_config(config_path)
@@ -284,6 +285,7 @@ def chat_completion_tiered(
         **override_kwargs: Extra kwargs forwarded to litellm.completion.
     """
     import litellm  # noqa: PLC0415
+    litellm.suppress_debug_info = True
 
     if config is None:
         config = load_config(config_path)
