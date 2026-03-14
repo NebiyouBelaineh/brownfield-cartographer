@@ -1,0 +1,565 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "path": "backup/templates/pdf-metadata.yaml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "backup/templates/pdf-metadata.yaml"
+    },
+    {
+      "path": "backup/templates/pdf-metadata-final.yaml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "backup/templates/pdf-metadata-final.yaml"
+    },
+    {
+      "path": "scripts/md_to_pdf.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 1,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "scripts/md_to_pdf.py"
+    },
+    {
+      "path": "tests/test_navigator.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 1,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "tests/test_navigator.py"
+    },
+    {
+      "pagerank": 0.021109,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/agents/navigator.py"
+    },
+    {
+      "pagerank": 0.154849,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/graph/__init__.py"
+    },
+    {
+      "pagerank": 0.077387,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/llm_config.py"
+    },
+    {
+      "path": "tests/test_semanticist.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 1,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "tests/test_semanticist.py"
+    },
+    {
+      "pagerank": 0.024091,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/agents/semanticist.py"
+    },
+    {
+      "path": "tests/test_archivist.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 1,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "tests/test_archivist.py"
+    },
+    {
+      "pagerank": 0.01811,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/agents/archivist.py"
+    },
+    {
+      "path": "tests/test_sql_lineage.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 2,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "tests/test_sql_lineage.py"
+    },
+    {
+      "pagerank": 0.026107,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/analyzers/sql_lineage.py"
+    },
+    {
+      "path": "tests/test_knowledge_graph.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 2,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "tests/test_knowledge_graph.py"
+    },
+    {
+      "pagerank": 0.020109,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/graph/knowledge_graph.py"
+    },
+    {
+      "pagerank": 0.026107,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/models/edges.py"
+    },
+    {
+      "path": "tests/test_dag_config_parser.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 1,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "tests/test_dag_config_parser.py"
+    },
+    {
+      "pagerank": 0.029106,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/analyzers/dag_config_parser.py"
+    },
+    {
+      "path": "tests/test_orchestrator.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 1,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "tests/test_orchestrator.py"
+    },
+    {
+      "pagerank": 0.029106,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/orchestrator.py"
+    },
+    {
+      "path": "tests/test_llm_config.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 3,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "tests/test_llm_config.py"
+    },
+    {
+      "path": "tests/__init__.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 1,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "tests/__init__.py"
+    },
+    {
+      "path": "tests/test_models_edges.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 2,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "tests/test_models_edges.py"
+    },
+    {
+      "pagerank": 0.026107,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/models/nodes.py"
+    },
+    {
+      "path": "tests/test_tree_sitter_analyzer.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 2,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "tests/test_tree_sitter_analyzer.py"
+    },
+    {
+      "pagerank": 0.091778,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/analyzers/tree_sitter_analyzer.py"
+    },
+    {
+      "path": "tests/test_python_data_flow.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 1,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "tests/test_python_data_flow.py"
+    },
+    {
+      "pagerank": 0.029106,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/analyzers/python_data_flow.py"
+    },
+    {
+      "path": "src/cli.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 4,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "src/cli.py"
+    },
+    {
+      "pagerank": 0.026481,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/agents/__init__.py"
+    },
+    {
+      "pagerank": 0.109215,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/models/__init__.py"
+    },
+    {
+      "path": "src/agents/hydrologist.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 3,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "src/agents/hydrologist.py"
+    },
+    {
+      "pagerank": 0.023108,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/analyzers/__init__.py"
+    },
+    {
+      "path": "src/agents/surveyor.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 2,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": true,
+      "id": "src/agents/surveyor.py"
+    },
+    {
+      "path": "src/models/graph.py",
+      "language": "python",
+      "node_type": "module",
+      "change_velocity_30d": 1,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "src/models/graph.py"
+    }
+  ],
+  "edges": [
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_navigator.py",
+      "target": "src/agents/navigator.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_navigator.py",
+      "target": "src/graph/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_navigator.py",
+      "target": "src/llm_config.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/navigator.py",
+      "target": "src/graph/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/navigator.py",
+      "target": "src/llm_config.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/navigator.py",
+      "target": "src/agents/semanticist.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_semanticist.py",
+      "target": "src/agents/semanticist.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_semanticist.py",
+      "target": "src/graph/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_semanticist.py",
+      "target": "src/llm_config.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/semanticist.py",
+      "target": "src/graph/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/semanticist.py",
+      "target": "src/llm_config.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_archivist.py",
+      "target": "src/agents/archivist.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_archivist.py",
+      "target": "src/graph/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_archivist.py",
+      "target": "src/llm_config.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/archivist.py",
+      "target": "src/graph/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/archivist.py",
+      "target": "src/llm_config.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_sql_lineage.py",
+      "target": "src/analyzers/sql_lineage.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/analyzers/sql_lineage.py",
+      "target": "src/analyzers/tree_sitter_analyzer.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_knowledge_graph.py",
+      "target": "src/graph/knowledge_graph.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_knowledge_graph.py",
+      "target": "src/models/edges.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/graph/knowledge_graph.py",
+      "target": "src/models/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_dag_config_parser.py",
+      "target": "src/analyzers/dag_config_parser.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/analyzers/dag_config_parser.py",
+      "target": "src/analyzers/tree_sitter_analyzer.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_orchestrator.py",
+      "target": "src/orchestrator.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/orchestrator.py",
+      "target": "src/agents/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/orchestrator.py",
+      "target": "src/llm_config.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_llm_config.py",
+      "target": "src/llm_config.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_models_edges.py",
+      "target": "src/models/edges.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_models_edges.py",
+      "target": "src/models/nodes.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_tree_sitter_analyzer.py",
+      "target": "src/analyzers/tree_sitter_analyzer.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_tree_sitter_analyzer.py",
+      "target": "src/models/nodes.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/analyzers/tree_sitter_analyzer.py",
+      "target": "src/models/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "tests/test_python_data_flow.py",
+      "target": "src/analyzers/python_data_flow.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/analyzers/python_data_flow.py",
+      "target": "src/analyzers/tree_sitter_analyzer.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/cli.py",
+      "target": "src/llm_config.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/cli.py",
+      "target": "src/orchestrator.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/cli.py",
+      "target": "src/agents/navigator.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/cli.py",
+      "target": "src/graph/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/models/__init__.py",
+      "target": "src/graph/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/hydrologist.py",
+      "target": "src/analyzers/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/hydrologist.py",
+      "target": "src/analyzers/dag_config_parser.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/hydrologist.py",
+      "target": "src/analyzers/python_data_flow.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/hydrologist.py",
+      "target": "src/graph/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/surveyor.py",
+      "target": "src/analyzers/__init__.py"
+    },
+    {
+      "edge_type": "IMPORTS",
+      "weight": 1,
+      "source": "src/agents/surveyor.py",
+      "target": "src/graph/__init__.py"
+    }
+  ]
+}

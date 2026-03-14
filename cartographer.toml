@@ -1,0 +1,8 @@
+[llm]
+provider = "ollama"
+model = "qwen2.5-coder:7b"
+base_url = "http://172.29.96.1:11434"
+embedding_model = "nomic-embed-text:v1.5"
+
+cloud_model = "claude-haiku-4-5-20251001"
+large_repo_threshold = 100

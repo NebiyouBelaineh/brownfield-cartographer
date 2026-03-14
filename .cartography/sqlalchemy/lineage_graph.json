@@ -1,0 +1,2727 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "transform_id": "python:test/orm/test_froms.py:data_flow",
+      "source_file": "test/orm/test_froms.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t1",
+        "users"
+      ],
+      "target_datasets": [],
+      "id": "python:test/orm/test_froms.py:data_flow"
+    },
+    {
+      "name": "t1",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "t1"
+    },
+    {
+      "name": "users",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "users"
+    },
+    {
+      "transform_id": "python:test/orm/test_bind.py:data_flow",
+      "source_file": "test/orm/test_bind.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "foo",
+        "users",
+        "addresses"
+      ],
+      "target_datasets": [],
+      "id": "python:test/orm/test_bind.py:data_flow"
+    },
+    {
+      "name": "foo",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "foo"
+    },
+    {
+      "name": "addresses",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "addresses"
+    },
+    {
+      "transform_id": "python:test/orm/test_text.py:data_flow",
+      "source_file": "test/orm/test_text.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "users"
+      ],
+      "target_datasets": [],
+      "id": "python:test/orm/test_text.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/orm/test_mapper.py:data_flow",
+      "source_file": "test/orm/test_mapper.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "address"
+      ],
+      "target_datasets": [],
+      "id": "python:test/orm/test_mapper.py:data_flow"
+    },
+    {
+      "name": "address",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "address"
+    },
+    {
+      "transform_id": "python:test/sql/test_tablesample.py:data_flow",
+      "source_file": "test/sql/test_tablesample.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "a"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_tablesample.py:data_flow"
+    },
+    {
+      "name": "a",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "a"
+    },
+    {
+      "transform_id": "python:test/sql/test_deprecations.py:data_flow",
+      "source_file": "test/sql/test_deprecations.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable",
+        "myothertable",
+        "t1",
+        "mytable",
+        "myothertable"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_deprecations.py:data_flow"
+    },
+    {
+      "name": "mytable",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "mytable"
+    },
+    {
+      "name": "myothertable",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "myothertable"
+    },
+    {
+      "transform_id": "python:test/sql/test_compiler.py:data_flow",
+      "source_file": "test/sql/test_compiler.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable",
+        "myothertable",
+        "thirdtable",
+        "users",
+        "addresses",
+        "foo",
+        "foo_bar",
+        "foo",
+        "foo_bar",
+        "t",
+        "t",
+        "t",
+        "t",
+        "foo",
+        "foo_bar",
+        "t",
+        "t1",
+        "zips",
+        "places",
+        "t",
+        "t",
+        "values",
+        "table%name",
+        "casttest",
+        "QuotedName",
+        "t",
+        "t",
+        "t",
+        "foo",
+        "t",
+        "t",
+        "t",
+        "mytable",
+        "my_table",
+        "my_table",
+        "some_table",
+        "some_table",
+        "foo",
+        "foo",
+        "baz",
+        "yetagain",
+        "t1",
+        "t2",
+        "t1",
+        "t2",
+        "parent",
+        "child",
+        "t1",
+        "t2",
+        "t3",
+        "t1",
+        "t2",
+        "t3",
+        "t1",
+        "t2",
+        "t",
+        "a",
+        "a"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "name": "thirdtable",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "thirdtable"
+    },
+    {
+      "name": "foo_bar",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "foo_bar"
+    },
+    {
+      "name": "t",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "t"
+    },
+    {
+      "name": "zips",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "zips"
+    },
+    {
+      "name": "places",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "places"
+    },
+    {
+      "name": "values",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "values"
+    },
+    {
+      "name": "table%name",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "table%name"
+    },
+    {
+      "name": "casttest",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "casttest"
+    },
+    {
+      "name": "QuotedName",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "QuotedName"
+    },
+    {
+      "name": "my_table",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "my_table"
+    },
+    {
+      "name": "some_table",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "some_table"
+    },
+    {
+      "name": "baz",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "baz"
+    },
+    {
+      "name": "yetagain",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "yetagain"
+    },
+    {
+      "name": "t2",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "t2"
+    },
+    {
+      "name": "parent",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "parent"
+    },
+    {
+      "name": "child",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "child"
+    },
+    {
+      "name": "t3",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "t3"
+    },
+    {
+      "transform_id": "python:test/sql/test_functions.py:data_flow",
+      "source_file": "test/sql/test_functions.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable",
+        "t",
+        "t",
+        "t",
+        "t",
+        "mytable",
+        "myothertable",
+        "users",
+        "test",
+        "assets_transactions",
+        "assets_transactions",
+        "values",
+        "a",
+        "a",
+        "a",
+        "a",
+        "b",
+        "table1",
+        "table2",
+        "check"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "name": "test",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "test"
+    },
+    {
+      "name": "assets_transactions",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "assets_transactions"
+    },
+    {
+      "name": "b",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "b"
+    },
+    {
+      "name": "table1",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "table1"
+    },
+    {
+      "name": "table2",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "table2"
+    },
+    {
+      "name": "check",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "check"
+    },
+    {
+      "transform_id": "python:test/sql/test_compare.py:data_flow",
+      "source_file": "test/sql/test_compare.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "a",
+        "a",
+        "a",
+        "a",
+        "b",
+        "a",
+        "a",
+        "b",
+        "a",
+        "a",
+        "a",
+        "t1",
+        "t1",
+        "a",
+        "a",
+        "b",
+        "a",
+        "a",
+        "a",
+        "t",
+        "t",
+        "q",
+        "q",
+        "q"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_compare.py:data_flow"
+    },
+    {
+      "name": "q",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "q"
+    },
+    {
+      "transform_id": "python:test/sql/test_update.py:data_flow",
+      "source_file": "test/sql/test_update.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "foo",
+        "foo",
+        "t",
+        "t",
+        "t2",
+        "t",
+        "foo"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_update.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_external_traversal.py:data_flow",
+      "source_file": "test/sql/test_external_traversal.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t",
+        "table1",
+        "table2",
+        "t1",
+        "t1",
+        "t1",
+        "t1",
+        "t1",
+        "foo",
+        "foo",
+        "table1",
+        "table2",
+        "table1",
+        "table2",
+        "users",
+        "addresses",
+        "table1",
+        "table2",
+        "table1",
+        "table2"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_external_traversal.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_select.py:data_flow",
+      "source_file": "test/sql/test_select.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable",
+        "myothertable",
+        "tbl",
+        "x"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_select.py:data_flow"
+    },
+    {
+      "name": "tbl",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "tbl"
+    },
+    {
+      "name": "x",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "x"
+    },
+    {
+      "transform_id": "python:test/sql/test_roles.py:data_flow",
+      "source_file": "test/sql/test_roles.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable",
+        "myothertable"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_roles.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_types.py:data_flow",
+      "source_file": "test/sql/test_types.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "foo_table",
+        "test",
+        "test",
+        "test"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_types.py:data_flow"
+    },
+    {
+      "name": "foo_table",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "foo_table"
+    },
+    {
+      "transform_id": "python:test/sql/test_lambdas.py:data_flow",
+      "source_file": "test/sql/test_lambdas.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t1",
+        "t1",
+        "t1",
+        "t1",
+        "foo",
+        "foo",
+        "t1",
+        "t1",
+        "t1",
+        "t1",
+        "t",
+        "t1",
+        "t2",
+        "t1",
+        "tt",
+        "t1",
+        "t1",
+        "t1",
+        "t1",
+        "t1",
+        "t1",
+        "t2",
+        "t1",
+        "t1",
+        "t2",
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_lambdas.py:data_flow"
+    },
+    {
+      "name": "tt",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "tt"
+    },
+    {
+      "transform_id": "python:test/sql/test_resultset.py:data_flow",
+      "source_file": "test/sql/test_resultset.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "users",
+        "keyed2"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_resultset.py:data_flow"
+    },
+    {
+      "name": "keyed2",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "keyed2"
+    },
+    {
+      "transform_id": "python:test/sql/test_lateral.py:data_flow",
+      "source_file": "test/sql/test_lateral.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "a"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_lateral.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_values.py:data_flow",
+      "source_file": "test/sql/test_values.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_values.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_case_statement.py:data_flow",
+      "source_file": "test/sql/test_case_statement.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "test",
+        "test"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_case_statement.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_labels.py:data_flow",
+      "source_file": "test/sql/test_labels.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "some_large_named_table",
+        "table_with_exactly_29_characs",
+        "some_large_named_table",
+        "table_with_exactly_29_characs",
+        "thirty_characters_table_xxxxxx",
+        "other_thirty_characters_table_",
+        "a",
+        "tablename",
+        "some_table",
+        "some_table"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_labels.py:data_flow"
+    },
+    {
+      "name": "some_large_named_table",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "some_large_named_table"
+    },
+    {
+      "name": "table_with_exactly_29_characs",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "table_with_exactly_29_characs"
+    },
+    {
+      "name": "thirty_characters_table_xxxxxx",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "thirty_characters_table_xxxxxx"
+    },
+    {
+      "name": "other_thirty_characters_table_",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "other_thirty_characters_table_"
+    },
+    {
+      "name": "tablename",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "tablename"
+    },
+    {
+      "transform_id": "python:test/sql/test_text.py:data_flow",
+      "source_file": "test/sql/test_text.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable",
+        "myothertable",
+        "tablename",
+        "my_table",
+        "my_table",
+        "my_table",
+        "my_table"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_text.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_cte.py:data_flow",
+      "source_file": "test/sql/test_cte.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "orders",
+        "parts",
+        "parts",
+        "parts",
+        "a",
+        "b",
+        "manager",
+        "employee",
+        "test",
+        "manager",
+        "employee",
+        "orders",
+        "orders",
+        "entity",
+        "tag",
+        "orders",
+        "a",
+        "b",
+        "c",
+        "orders",
+        "orders",
+        "orders",
+        "order",
+        "order",
+        "order",
+        "orders",
+        "orders",
+        "table_1",
+        "table_2",
+        "customer",
+        "order",
+        "table_1",
+        "table_1",
+        "table_2",
+        "a",
+        "orders",
+        "orders",
+        "products",
+        "products_log",
+        "products",
+        "products",
+        "parts",
+        "products",
+        "products",
+        "products",
+        "products",
+        "products",
+        "products",
+        "products",
+        "foo",
+        "bar",
+        "foo",
+        "bar",
+        "products",
+        "table1",
+        "table2",
+        "table1",
+        "table2",
+        "products",
+        "products",
+        "products",
+        "products",
+        "a",
+        "a",
+        "products",
+        "table_1",
+        "table_1",
+        "contracts",
+        "invoices"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "name": "orders",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "orders"
+    },
+    {
+      "name": "parts",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "parts"
+    },
+    {
+      "name": "manager",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "manager"
+    },
+    {
+      "name": "employee",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "employee"
+    },
+    {
+      "name": "entity",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "entity"
+    },
+    {
+      "name": "tag",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "tag"
+    },
+    {
+      "name": "c",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "c"
+    },
+    {
+      "name": "order",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "order"
+    },
+    {
+      "name": "table_1",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "table_1"
+    },
+    {
+      "name": "table_2",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "table_2"
+    },
+    {
+      "name": "customer",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "customer"
+    },
+    {
+      "name": "products",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "products"
+    },
+    {
+      "name": "products_log",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "products_log"
+    },
+    {
+      "name": "bar",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "bar"
+    },
+    {
+      "name": "contracts",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "contracts"
+    },
+    {
+      "name": "invoices",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "invoices"
+    },
+    {
+      "transform_id": "python:test/sql/test_insert_exec.py:data_flow",
+      "source_file": "test/sql/test_insert_exec.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "foo",
+        "foo"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_insert_exec.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_tstrings_py314.py:data_flow",
+      "source_file": "test/sql/test_tstrings_py314.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable",
+        "myothertable"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_tstrings_py314.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_insert.py:data_flow",
+      "source_file": "test/sql/test_insert.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "foo",
+        "foo",
+        "foo",
+        "t",
+        "t",
+        "mytable",
+        "t"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_insert.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_from_linter.py:data_flow",
+      "source_file": "test/sql/test_from_linter.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "tbl"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_from_linter.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_syntax_extensions.py:data_flow",
+      "source_file": "test/sql/test_syntax_extensions.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t",
+        "t",
+        "t"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_syntax_extensions.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_utils.py:data_flow",
+      "source_file": "test/sql/test_utils.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_utils.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_selectable.py:data_flow",
+      "source_file": "test/sql/test_selectable.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t",
+        "t",
+        "t",
+        "t1",
+        "t2",
+        "t1",
+        "t2",
+        "t",
+        "t1",
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "a",
+        "b",
+        "d",
+        "t1",
+        "t2",
+        "a",
+        "t1",
+        "foo",
+        "foo",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "a",
+        "a",
+        "a",
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c",
+        "a",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "d",
+        "a",
+        "b",
+        "c",
+        "d",
+        "a",
+        "b",
+        "c",
+        "d",
+        "t",
+        "t",
+        "t",
+        "t",
+        "table1",
+        "table1",
+        "t1",
+        "t1",
+        "table1",
+        "table1",
+        "table1",
+        "table1",
+        "table2",
+        "table1",
+        "table1",
+        "table1",
+        "table1",
+        "table2",
+        "t",
+        "a",
+        "b",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "name": "t4",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "t4"
+    },
+    {
+      "name": "d",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "d"
+    },
+    {
+      "transform_id": "python:test/sql/test_metadata.py:data_flow",
+      "source_file": "test/sql/test_metadata.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t",
+        "foo",
+        "t",
+        "t2",
+        "t"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_metadata.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_returning.py:data_flow",
+      "source_file": "test/sql/test_returning.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t",
+        "t",
+        "tbl",
+        "tbl"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_returning.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/sql/test_operators.py:data_flow",
+      "source_file": "test/sql/test_operators.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t",
+        "t",
+        "t",
+        "t",
+        "t1",
+        "t2",
+        "t1",
+        "t2",
+        "t1",
+        "t2",
+        "t1",
+        "t2",
+        "mytable",
+        "op",
+        "mytable",
+        "mytable",
+        "myothertable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_operators.py:data_flow"
+    },
+    {
+      "name": "op",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "op"
+    },
+    {
+      "transform_id": "python:test/sql/test_table_via_select.py:data_flow",
+      "source_file": "test/sql/test_table_via_select.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "src",
+        "src",
+        "src",
+        "src"
+      ],
+      "target_datasets": [],
+      "id": "python:test/sql/test_table_via_select.py:data_flow"
+    },
+    {
+      "name": "src",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "src"
+    },
+    {
+      "transform_id": "python:test/ext/test_compiler.py:data_flow",
+      "source_file": "test/ext/test_compiler.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable",
+        "t1",
+        "t1",
+        "t1",
+        "t",
+        "t"
+      ],
+      "target_datasets": [],
+      "id": "python:test/ext/test_compiler.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/dialect/oracle/test_compiler.py:data_flow",
+      "source_file": "test/dialect/oracle/test_compiler.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "sometable",
+        "part",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "my_table",
+        "my_table",
+        "my_table",
+        "my_table",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "mytable",
+        "myothertable",
+        "thirdtable",
+        "mytable",
+        "myothertable",
+        "a",
+        "b",
+        "c",
+        "address_types",
+        "addresses",
+        "t1",
+        "t1",
+        "t1",
+        "some_table",
+        "t1",
+        "t2",
+        "t",
+        "mytable"
+      ],
+      "target_datasets": [],
+      "id": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "name": "sometable",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "sometable"
+    },
+    {
+      "name": "part",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "part"
+    },
+    {
+      "name": "address_types",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "address_types"
+    },
+    {
+      "transform_id": "python:test/dialect/mysql/test_deprecations.py:data_flow",
+      "source_file": "test/dialect/mysql/test_deprecations.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "foo"
+      ],
+      "target_datasets": [],
+      "id": "python:test/dialect/mysql/test_deprecations.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/dialect/mysql/test_compiler.py:data_flow",
+      "source_file": "test/dialect/mysql/test_compiler.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable",
+        "t1",
+        "t2",
+        "t1",
+        "t2",
+        "tt",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t1",
+        "t2",
+        "t1",
+        "t2",
+        "t1",
+        "t2",
+        "new",
+        "mytable",
+        "user",
+        "matchtable",
+        "matchtable"
+      ],
+      "target_datasets": [],
+      "id": "python:test/dialect/mysql/test_compiler.py:data_flow"
+    },
+    {
+      "name": "new",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "new"
+    },
+    {
+      "name": "user",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "user"
+    },
+    {
+      "name": "matchtable",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "matchtable"
+    },
+    {
+      "transform_id": "python:test/dialect/mysql/test_for_update.py:data_flow",
+      "source_file": "test/dialect/mysql/test_for_update.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable",
+        "table2"
+      ],
+      "target_datasets": [],
+      "id": "python:test/dialect/mysql/test_for_update.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/dialect/mssql/test_deprecations.py:data_flow",
+      "source_file": "test/dialect/mssql/test_deprecations.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t1"
+      ],
+      "target_datasets": [],
+      "id": "python:test/dialect/mssql/test_deprecations.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/dialect/mssql/test_compiler.py:data_flow",
+      "source_file": "test/dialect/mssql/test_compiler.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t",
+        "sometable",
+        "some_table",
+        "t1",
+        "t2",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "t1",
+        "t2",
+        "t1",
+        "t2",
+        "sometable",
+        "othertable",
+        "sometable",
+        "sometable",
+        "sometable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "mytable",
+        "t1",
+        "t2",
+        "t",
+        "mytable",
+        "mytable",
+        "mytable",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t1",
+        "t2",
+        "t",
+        "t",
+        "t",
+        "t",
+        "t"
+      ],
+      "target_datasets": [],
+      "id": "python:test/dialect/mssql/test_compiler.py:data_flow"
+    },
+    {
+      "name": "othertable",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "othertable"
+    },
+    {
+      "transform_id": "python:test/dialect/sqlite/test_compiler.py:data_flow",
+      "source_file": "test/dialect/sqlite/test_compiler.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t",
+        "mytable",
+        "src",
+        "src"
+      ],
+      "target_datasets": [],
+      "id": "python:test/dialect/sqlite/test_compiler.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/dialect/postgresql/test_compiler.py:data_flow",
+      "source_file": "test/dialect/postgresql/test_compiler.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "mytable",
+        "mytable",
+        "some_table",
+        "mytable",
+        "table2",
+        "t1",
+        "t1",
+        "t2",
+        "t1",
+        "t2",
+        "weather",
+        "accounts",
+        "salesmen",
+        "employees",
+        "summary",
+        "data",
+        "data",
+        "data",
+        "data",
+        "data",
+        "data",
+        "data",
+        "usages",
+        "usages",
+        "t",
+        "mytable",
+        "bar",
+        "t",
+        "t",
+        "mytable",
+        "mytable"
+      ],
+      "target_datasets": [],
+      "id": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "name": "weather",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "weather"
+    },
+    {
+      "name": "accounts",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "accounts"
+    },
+    {
+      "name": "salesmen",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "salesmen"
+    },
+    {
+      "name": "employees",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "employees"
+    },
+    {
+      "name": "summary",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "summary"
+    },
+    {
+      "name": "data",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "data"
+    },
+    {
+      "name": "usages",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "usages"
+    },
+    {
+      "transform_id": "python:test/typing/plain_files/sql/lowercase_objects.py:data_flow",
+      "source_file": "test/typing/plain_files/sql/lowercase_objects.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "book",
+        "t"
+      ],
+      "target_datasets": [],
+      "id": "python:test/typing/plain_files/sql/lowercase_objects.py:data_flow"
+    },
+    {
+      "name": "book",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "book"
+    },
+    {
+      "transform_id": "python:test/typing/plain_files/sql/typed_results.py:data_flow",
+      "source_file": "test/typing/plain_files/sql/typed_results.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "x"
+      ],
+      "target_datasets": [],
+      "id": "python:test/typing/plain_files/sql/typed_results.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/typing/plain_files/sql/misc.py:data_flow",
+      "source_file": "test/typing/plain_files/sql/misc.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t",
+        "mytable"
+      ],
+      "target_datasets": [],
+      "id": "python:test/typing/plain_files/sql/misc.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/orm/declarative/test_basic.py:data_flow",
+      "source_file": "test/orm/declarative/test_basic.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "foo"
+      ],
+      "target_datasets": [],
+      "id": "python:test/orm/declarative/test_basic.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/orm/inheritance/test_basic.py:data_flow",
+      "source_file": "test/orm/inheritance/test_basic.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "target_datasets": [],
+      "id": "python:test/orm/inheritance/test_basic.py:data_flow"
+    },
+    {
+      "transform_id": "python:test/perf/compiled_extensions/result.py:data_flow",
+      "source_file": "test/perf/compiled_extensions/result.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "t"
+      ],
+      "target_datasets": [],
+      "id": "python:test/perf/compiled_extensions/result.py:data_flow"
+    },
+    {
+      "transform_id": "python:lib/sqlalchemy/dialects/oracle/dictionary.py:data_flow",
+      "source_file": "lib/sqlalchemy/dialects/oracle/dictionary.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "dual"
+      ],
+      "target_datasets": [],
+      "id": "python:lib/sqlalchemy/dialects/oracle/dictionary.py:data_flow"
+    },
+    {
+      "name": "dual",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "dual"
+    },
+    {
+      "transform_id": "python:lib/sqlalchemy/dialects/mysql/base.py:data_flow",
+      "source_file": "lib/sqlalchemy/dialects/mysql/base.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "columns"
+      ],
+      "target_datasets": [],
+      "id": "python:lib/sqlalchemy/dialects/mysql/base.py:data_flow"
+    },
+    {
+      "name": "columns",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "columns"
+    },
+    {
+      "transform_id": "python:lib/sqlalchemy/testing/suite/test_select.py:data_flow",
+      "source_file": "lib/sqlalchemy/testing/suite/test_select.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "foo"
+      ],
+      "target_datasets": [],
+      "id": "python:lib/sqlalchemy/testing/suite/test_select.py:data_flow"
+    },
+    {
+      "transform_id": "python:lib/sqlalchemy/testing/suite/test_results.py:data_flow",
+      "source_file": "lib/sqlalchemy/testing/suite/test_results.py",
+      "transformation_type": "python",
+      "node_type": "transformation",
+      "source_datasets": [
+        "percent%table"
+      ],
+      "target_datasets": [],
+      "id": "python:lib/sqlalchemy/testing/suite/test_results.py:data_flow"
+    },
+    {
+      "name": "percent%table",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "percent%table"
+    }
+  ],
+  "edges": [
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/orm/test_froms.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/sql/test_deprecations.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/sql/test_compare.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/sql/test_external_traversal.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/sql/test_lambdas.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/sql/test_operators.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/ext/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/dialect/mysql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/dialect/mssql/test_deprecations.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/dialect/mssql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t1",
+      "target": "python:test/orm/inheritance/test_basic.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "users",
+      "target": "python:test/orm/test_froms.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "users",
+      "target": "python:test/orm/test_bind.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "users",
+      "target": "python:test/orm/test_text.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "users",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "users",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "users",
+      "target": "python:test/sql/test_external_traversal.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "users",
+      "target": "python:test/sql/test_resultset.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/orm/test_bind.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/sql/test_update.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/sql/test_external_traversal.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/sql/test_lambdas.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/sql/test_insert_exec.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/sql/test_insert.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/sql/test_metadata.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/dialect/mysql/test_deprecations.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:test/orm/declarative/test_basic.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo",
+      "target": "python:lib/sqlalchemy/testing/suite/test_select.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "addresses",
+      "target": "python:test/orm/test_bind.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "addresses",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "addresses",
+      "target": "python:test/sql/test_external_traversal.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "addresses",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "address",
+      "target": "python:test/orm/test_mapper.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "a",
+      "target": "python:test/sql/test_tablesample.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "a",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "a",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "a",
+      "target": "python:test/sql/test_compare.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "a",
+      "target": "python:test/sql/test_lateral.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "a",
+      "target": "python:test/sql/test_labels.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "a",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "a",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "a",
+      "target": "python:test/sql/test_table_via_select.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "a",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/sql/test_deprecations.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/sql/test_select.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/sql/test_roles.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/sql/test_text.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/sql/test_tstrings_py314.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/sql/test_insert.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/sql/test_utils.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/sql/test_operators.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/ext/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/dialect/mysql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/dialect/mysql/test_for_update.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/dialect/mssql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/dialect/sqlite/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "mytable",
+      "target": "python:test/typing/plain_files/sql/misc.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "myothertable",
+      "target": "python:test/sql/test_deprecations.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "myothertable",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "myothertable",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "myothertable",
+      "target": "python:test/sql/test_select.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "myothertable",
+      "target": "python:test/sql/test_roles.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "myothertable",
+      "target": "python:test/sql/test_text.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "myothertable",
+      "target": "python:test/sql/test_tstrings_py314.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "myothertable",
+      "target": "python:test/sql/test_operators.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "myothertable",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "thirdtable",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "thirdtable",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo_bar",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_compare.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_update.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_external_traversal.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_lambdas.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_values.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_insert.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_syntax_extensions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_metadata.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_returning.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/sql/test_operators.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/ext/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/dialect/mysql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/dialect/mssql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/dialect/sqlite/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/typing/plain_files/sql/lowercase_objects.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/typing/plain_files/sql/misc.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t",
+      "target": "python:test/perf/compiled_extensions/result.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "zips",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "places",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "values",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "values",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table%name",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "casttest",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "QuotedName",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "my_table",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "my_table",
+      "target": "python:test/sql/test_text.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "my_table",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "some_table",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "some_table",
+      "target": "python:test/sql/test_labels.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "some_table",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "some_table",
+      "target": "python:test/dialect/mssql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "some_table",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "baz",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "yetagain",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t2",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t2",
+      "target": "python:test/sql/test_update.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t2",
+      "target": "python:test/sql/test_lambdas.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t2",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t2",
+      "target": "python:test/sql/test_metadata.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t2",
+      "target": "python:test/sql/test_operators.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t2",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t2",
+      "target": "python:test/dialect/mysql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t2",
+      "target": "python:test/dialect/mssql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t2",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t2",
+      "target": "python:test/orm/inheritance/test_basic.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "parent",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "child",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t3",
+      "target": "python:test/sql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t3",
+      "target": "python:test/sql/test_lambdas.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t3",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t3",
+      "target": "python:test/orm/inheritance/test_basic.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "test",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "test",
+      "target": "python:test/sql/test_types.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "test",
+      "target": "python:test/sql/test_case_statement.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "test",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "assets_transactions",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "b",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "b",
+      "target": "python:test/sql/test_compare.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "b",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "b",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "b",
+      "target": "python:test/sql/test_table_via_select.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "b",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table1",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table1",
+      "target": "python:test/sql/test_external_traversal.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table1",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table1",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table2",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table2",
+      "target": "python:test/sql/test_external_traversal.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table2",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table2",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table2",
+      "target": "python:test/dialect/mysql/test_for_update.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table2",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "check",
+      "target": "python:test/sql/test_functions.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "q",
+      "target": "python:test/sql/test_compare.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "tbl",
+      "target": "python:test/sql/test_select.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "tbl",
+      "target": "python:test/sql/test_from_linter.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "tbl",
+      "target": "python:test/sql/test_returning.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "x",
+      "target": "python:test/sql/test_select.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "x",
+      "target": "python:test/typing/plain_files/sql/typed_results.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "foo_table",
+      "target": "python:test/sql/test_types.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "tt",
+      "target": "python:test/sql/test_lambdas.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "tt",
+      "target": "python:test/dialect/mysql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "keyed2",
+      "target": "python:test/sql/test_resultset.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "some_large_named_table",
+      "target": "python:test/sql/test_labels.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table_with_exactly_29_characs",
+      "target": "python:test/sql/test_labels.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "thirty_characters_table_xxxxxx",
+      "target": "python:test/sql/test_labels.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "other_thirty_characters_table_",
+      "target": "python:test/sql/test_labels.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "tablename",
+      "target": "python:test/sql/test_labels.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "tablename",
+      "target": "python:test/sql/test_text.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "orders",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "parts",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "manager",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "employee",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "entity",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "tag",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "c",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "c",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "c",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "order",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table_1",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "table_2",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "customer",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "products",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "products_log",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "bar",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "bar",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "contracts",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "invoices",
+      "target": "python:test/sql/test_cte.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "t4",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "d",
+      "target": "python:test/sql/test_selectable.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "op",
+      "target": "python:test/sql/test_operators.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "src",
+      "target": "python:test/sql/test_table_via_select.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "src",
+      "target": "python:test/dialect/sqlite/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "sometable",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "sometable",
+      "target": "python:test/dialect/mssql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "part",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "address_types",
+      "target": "python:test/dialect/oracle/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "new",
+      "target": "python:test/dialect/mysql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "user",
+      "target": "python:test/dialect/mysql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "matchtable",
+      "target": "python:test/dialect/mysql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "othertable",
+      "target": "python:test/dialect/mssql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "weather",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "accounts",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "salesmen",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "employees",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "summary",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "data",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "usages",
+      "target": "python:test/dialect/postgresql/test_compiler.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "book",
+      "target": "python:test/typing/plain_files/sql/lowercase_objects.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "dual",
+      "target": "python:lib/sqlalchemy/dialects/oracle/dictionary.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "columns",
+      "target": "python:lib/sqlalchemy/dialects/mysql/base.py:data_flow"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "percent%table",
+      "target": "python:lib/sqlalchemy/testing/suite/test_results.py:data_flow"
+    }
+  ]
+}

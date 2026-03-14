@@ -1,5 +1,6 @@
 """Python data flow analyzer: pandas, PySpark, SQLAlchemy read/write patterns."""
 
+import logging
 from pathlib import Path
 from typing import Any
 
@@ -7,11 +8,17 @@ from tree_sitter import Node, Tree
 
 from src.analyzers.tree_sitter_analyzer import LanguageRouter
 
+logger = logging.getLogger(__name__)
+
 # (method_name, direction) -> "read" | "write"
 _PANDAS_READ = {"read_csv", "read_parquet", "read_sql", "read_excel", "read_json", "read_hdf"}
 _PANDAS_WRITE = {"to_csv", "to_parquet", "to_sql", "to_excel", "to_json", "to_hdf"}
 _PYSPARK_READ = {"csv", "parquet", "table", "jdbc", "json", "orc"}
 _PYSPARK_WRITE = {"save", "saveAsTable", "insertInto"}
+
+# SQLAlchemy patterns
+_SQLALCHEMY_CONNECTION = {"create_engine", "create_async_engine"}
+_SQLALCHEMY_POSITIONAL_READ = {"read_sql_table", "read_sql_query"}
 
 
 def _get_text(node: Node, source: bytes) -> str:
@@ -60,11 +67,30 @@ def _walk_calls(node: Node, source: bytes, visitor: Any) -> None:
         _walk_calls(c, source, visitor)
 
 
+def _make_entry(
+    type_: str,
+    dataset: str,
+    method: str,
+    line: int,
+    path: Path,
+) -> dict[str, Any]:
+    """Build a data-flow record, adding a dynamic_ref entry when dataset is unresolved."""
+    entry: dict[str, Any] = {"type": type_, "dataset": dataset, "method": method, "line": line}
+    if dataset == "dynamic":
+        entry["dynamic_ref"] = {"file": str(path), "line": line, "call": method}
+        logger.warning(
+            "[python_data_flow] Unresolved (dynamic) reference at %s:%d in call '%s'",
+            path, line, method,
+        )
+    return entry
+
+
 def extract_python_data_flow(path: str | Path, source: bytes) -> list[dict[str, Any]]:
     """
     Extract data read/write patterns from Python source.
     Returns list of {type: 'read'|'write', dataset: str, method: str, line: int}.
-    dataset is "dynamic" if path cannot be statically determined.
+    dataset is "dynamic" if path cannot be statically determined;
+    those entries also carry a "dynamic_ref" key with file/line/call details.
     """
     path = Path(path)
     if path.suffix.lower() != ".py":
@@ -85,20 +111,27 @@ def extract_python_data_flow(path: str | Path, source: bytes) -> list[dict[str, 
 
         if name in _PANDAS_READ:
             dataset = _extract_string_arg(call, src) or "dynamic"
-            results.append({"type": "read", "dataset": dataset, "method": name, "line": line})
+            results.append(_make_entry("read", dataset, name, line, path))
         elif name in _PANDAS_WRITE:
             dataset = _extract_string_arg(call, src) or "dynamic"
-            results.append({"type": "write", "dataset": dataset, "method": name, "line": line})
+            results.append(_make_entry("write", dataset, name, line, path))
         elif name in _PYSPARK_READ:
-            # spark.read.csv("path") - the call is on .csv(...)
             dataset = _extract_string_arg(call, src) or "dynamic"
-            results.append({"type": "read", "dataset": dataset, "method": f"spark.read.{name}", "line": line})
+            results.append(_make_entry("read", dataset, f"spark.read.{name}", line, path))
         elif name in _PYSPARK_WRITE:
-            dataset = "dynamic"  # write path often in option
-            results.append({"type": "write", "dataset": dataset, "method": name, "line": line})
+            # write path is often set via .option() chains — always dynamic
+            results.append(_make_entry("write", "dynamic", name, line, path))
+        elif name in _SQLALCHEMY_CONNECTION:
+            # create_engine("dialect://...") — first arg is the connection URL
+            dataset = _extract_string_arg(call, src) or "dynamic"
+            results.append(_make_entry("connection", dataset, name, line, path))
+        elif name in _SQLALCHEMY_POSITIONAL_READ:
+            # pd.read_sql_table("table", con) / pd.read_sql_query("SELECT...", con)
+            dataset = _extract_string_arg(call, src) or "dynamic"
+            results.append(_make_entry("read", dataset, name, line, path))
         elif name == "execute":
-            # SQLAlchemy: execute(text("SELECT...")) - table names in SQL, hard to extract
-            results.append({"type": "read", "dataset": "dynamic", "method": "execute", "line": line})
+            # SQLAlchemy session/engine.execute — SQL body is dynamic
+            results.append(_make_entry("read", "dynamic", "execute", line, path))
 
     _walk_calls(tree.root_node, source, visit)
     return results

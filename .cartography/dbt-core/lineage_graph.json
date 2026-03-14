@@ -1,0 +1,1041 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/core/dbt/include/starter_project/models/example/my_first_dbt_model.sql:my_first_dbt_model",
+      "source_file": "core/dbt/include/starter_project/models/example/my_first_dbt_model.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "source_data"
+      ],
+      "target_datasets": [
+        "my_first_dbt_model"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/core/dbt/include/starter_project/models/example/my_first_dbt_model.sql:my_first_dbt_model"
+    },
+    {
+      "name": "my_first_dbt_model",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "my_first_dbt_model"
+    },
+    {
+      "name": "source_data",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "source_data"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/analyses/a.sql:a",
+      "source_file": "tests/functional/fixtures/happy_path_project/analyses/a.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [],
+      "target_datasets": [
+        "a"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/analyses/a.sql:a"
+    },
+    {
+      "name": "a",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "a"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/tests/t.sql:t",
+      "source_file": "tests/functional/fixtures/happy_path_project/tests/t.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [],
+      "target_datasets": [
+        "t"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/tests/t.sql:t"
+    },
+    {
+      "name": "t",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "t"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/functions/area_of_circle.sql:area_of_circle",
+      "source_file": "tests/functional/fixtures/happy_path_project/functions/area_of_circle.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [],
+      "target_datasets": [
+        "area_of_circle"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/functions/area_of_circle.sql:area_of_circle"
+    },
+    {
+      "name": "area_of_circle",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "area_of_circle"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/snapshots/snapshot.sql:snapshot",
+      "source_file": "tests/functional/fixtures/happy_path_project/snapshots/snapshot.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "seed"
+      ],
+      "target_datasets": [
+        "snapshot"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/snapshots/snapshot.sql:snapshot"
+    },
+    {
+      "name": "snapshot",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "snapshot"
+    },
+    {
+      "name": "seed",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "seed"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/macros/expression_is_true.sql:expression_is_true",
+      "source_file": "tests/functional/fixtures/happy_path_project/macros/expression_is_true.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "model"
+      ],
+      "target_datasets": [
+        "expression_is_true"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/macros/expression_is_true.sql:expression_is_true"
+    },
+    {
+      "name": "expression_is_true",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "expression_is_true"
+    },
+    {
+      "name": "model",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "model"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/metricflow_time_spine.sql:metricflow_time_spine",
+      "source_file": "tests/functional/fixtures/happy_path_project/models/metricflow_time_spine.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [],
+      "target_datasets": [
+        "metricflow_time_spine"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/metricflow_time_spine.sql:metricflow_time_spine"
+    },
+    {
+      "name": "metricflow_time_spine",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "metricflow_time_spine"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/snapshot_source.sql:snapshot_source",
+      "source_file": "tests/functional/fixtures/happy_path_project/models/snapshot_source.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [],
+      "target_datasets": [
+        "snapshot_source"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/snapshot_source.sql:snapshot_source"
+    },
+    {
+      "name": "snapshot_source",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "snapshot_source"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/incremental.sql:incremental",
+      "source_file": "tests/functional/fixtures/happy_path_project/models/incremental.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "this"
+      ],
+      "target_datasets": [
+        "incremental"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/incremental.sql:incremental"
+    },
+    {
+      "name": "incremental",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "incremental"
+    },
+    {
+      "name": "this",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "this"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/metricflow_time_spine_second.sql:metricflow_time_spine_second",
+      "source_file": "tests/functional/fixtures/happy_path_project/models/metricflow_time_spine_second.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [],
+      "target_datasets": [
+        "metricflow_time_spine_second"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/metricflow_time_spine_second.sql:metricflow_time_spine_second"
+    },
+    {
+      "name": "metricflow_time_spine_second",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "metricflow_time_spine_second"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/data/update.sql:update",
+      "source_file": "tests/functional/dependencies/data/update.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "seed"
+      ],
+      "target_datasets": [
+        "update"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/data/update.sql:update"
+    },
+    {
+      "name": "update",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "update"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/data/seed.sql:seed",
+      "source_file": "tests/functional/dependencies/data/seed.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "seed"
+      ],
+      "target_datasets": [
+        "seed"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/data/seed.sql:seed"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/nested_dependency/models/model.sql:model",
+      "source_file": "tests/functional/dependencies/nested_dependency/models/model.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [],
+      "target_datasets": [
+        "model"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/nested_dependency/models/model.sql:model"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_cn.sql:seed_cn",
+      "source_file": "tests/functional/snapshots/data/seed_cn.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "seed"
+      ],
+      "target_datasets": [
+        "seed_cn"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_cn.sql:seed_cn"
+    },
+    {
+      "name": "seed_cn",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "seed_cn"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_dbt_valid_to.sql:seed_dbt_valid_to",
+      "source_file": "tests/functional/snapshots/data/seed_dbt_valid_to.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "seed"
+      ],
+      "target_datasets": [
+        "seed_dbt_valid_to"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_dbt_valid_to.sql:seed_dbt_valid_to"
+    },
+    {
+      "name": "seed_dbt_valid_to",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "seed_dbt_valid_to"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/shared_macros.sql:shared_macros",
+      "source_file": "tests/functional/snapshots/data/shared_macros.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "validation_errors",
+        "calc",
+        "window_functions",
+        "base",
+        "model"
+      ],
+      "target_datasets": [
+        "shared_macros"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/shared_macros.sql:shared_macros"
+    },
+    {
+      "name": "shared_macros",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "shared_macros"
+    },
+    {
+      "name": "validation_errors",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "validation_errors"
+    },
+    {
+      "name": "calc",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "calc"
+    },
+    {
+      "name": "window_functions",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "window_functions"
+    },
+    {
+      "name": "base",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "base"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/update.sql:update",
+      "source_file": "tests/functional/snapshots/data/update.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "seed"
+      ],
+      "target_datasets": [
+        "update"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/update.sql:update"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_pg.sql:seed_pg",
+      "source_file": "tests/functional/snapshots/data/seed_pg.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "seed"
+      ],
+      "target_datasets": [
+        "seed_pg"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_pg.sql:seed_pg"
+    },
+    {
+      "name": "seed_pg",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "seed_pg"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/invalidate_postgres.sql:invalidate_postgres",
+      "source_file": "tests/functional/snapshots/data/invalidate_postgres.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "snapshot_alvarez_expected",
+        "seed",
+        "snapshot_castillo_expected",
+        "snapshot_expected",
+        "snapshot_kelly_expected"
+      ],
+      "target_datasets": [
+        "invalidate_postgres"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/invalidate_postgres.sql:invalidate_postgres"
+    },
+    {
+      "name": "invalidate_postgres",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "invalidate_postgres"
+    },
+    {
+      "name": "snapshot_alvarez_expected",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "snapshot_alvarez_expected"
+    },
+    {
+      "name": "snapshot_castillo_expected",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "snapshot_castillo_expected"
+    },
+    {
+      "name": "snapshot_expected",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "snapshot_expected"
+    },
+    {
+      "name": "snapshot_kelly_expected",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "snapshot_kelly_expected"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/core/dbt/include/starter_project/models/example/my_second_dbt_model.sql:my_second_dbt_model",
+      "source_file": "core/dbt/include/starter_project/models/example/my_second_dbt_model.sql",
+      "transformation_type": "dbt_model",
+      "node_type": "transformation",
+      "source_datasets": [
+        "my_first_dbt_model"
+      ],
+      "target_datasets": [
+        "my_second_dbt_model"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/core/dbt/include/starter_project/models/example/my_second_dbt_model.sql:my_second_dbt_model"
+    },
+    {
+      "name": "my_second_dbt_model",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "my_second_dbt_model"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/model_with_lots_of_schema_configs.sql:model_with_lots_of_schema_configs",
+      "source_file": "tests/functional/fixtures/happy_path_project/models/model_with_lots_of_schema_configs.sql",
+      "transformation_type": "dbt_model",
+      "node_type": "transformation",
+      "source_datasets": [
+        "ephemeral"
+      ],
+      "target_datasets": [
+        "model_with_lots_of_schema_configs"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/model_with_lots_of_schema_configs.sql:model_with_lots_of_schema_configs"
+    },
+    {
+      "name": "model_with_lots_of_schema_configs",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "model_with_lots_of_schema_configs"
+    },
+    {
+      "name": "ephemeral",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "ephemeral"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/model_to_unit_test.sql:model_to_unit_test",
+      "source_file": "tests/functional/fixtures/happy_path_project/models/model_to_unit_test.sql",
+      "transformation_type": "dbt_model",
+      "node_type": "transformation",
+      "source_datasets": [
+        "seed"
+      ],
+      "target_datasets": [
+        "model_to_unit_test"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/model_to_unit_test.sql:model_to_unit_test"
+    },
+    {
+      "name": "model_to_unit_test",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "model_to_unit_test"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/outer.sql:outer",
+      "source_file": "tests/functional/fixtures/happy_path_project/models/outer.sql",
+      "transformation_type": "dbt_model",
+      "node_type": "transformation",
+      "source_datasets": [
+        "ephemeral"
+      ],
+      "target_datasets": [
+        "outer"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/outer.sql:outer"
+    },
+    {
+      "name": "outer",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "outer"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/sub/inner.sql:inner",
+      "source_file": "tests/functional/fixtures/happy_path_project/models/sub/inner.sql",
+      "transformation_type": "dbt_model",
+      "node_type": "transformation",
+      "source_datasets": [
+        "outer"
+      ],
+      "target_datasets": [
+        "inner"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/sub/inner.sql:inner"
+    },
+    {
+      "name": "inner",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "inner"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/models_local/my_configured_model.sql:my_configured_model",
+      "source_file": "tests/functional/dependencies/models_local/my_configured_model.sql",
+      "transformation_type": "dbt_model",
+      "node_type": "transformation",
+      "source_datasets": [
+        "model_to_import"
+      ],
+      "target_datasets": [
+        "my_configured_model"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/models_local/my_configured_model.sql:my_configured_model"
+    },
+    {
+      "name": "my_configured_model",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "my_configured_model"
+    },
+    {
+      "name": "model_to_import",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "model_to_import"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/models_local/my_model.sql:my_model",
+      "source_file": "tests/functional/dependencies/models_local/my_model.sql",
+      "transformation_type": "dbt_model",
+      "node_type": "transformation",
+      "source_datasets": [
+        "model_to_import"
+      ],
+      "target_datasets": [
+        "my_model"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/models_local/my_model.sql:my_model"
+    },
+    {
+      "name": "my_model",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "my_model"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/inverted_ref_dependency/models/b.sql:b",
+      "source_file": "tests/functional/dependencies/inverted_ref_dependency/models/b.sql",
+      "transformation_type": "dbt_model",
+      "node_type": "transformation",
+      "source_datasets": [
+        "a"
+      ],
+      "target_datasets": [
+        "b"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/inverted_ref_dependency/models/b.sql:b"
+    },
+    {
+      "name": "b",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "b"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/local_dependency/models/model_to_import.sql:model_to_import",
+      "source_file": "tests/functional/dependencies/local_dependency/models/model_to_import.sql",
+      "transformation_type": "dbt_model",
+      "node_type": "transformation",
+      "source_datasets": [
+        "seed"
+      ],
+      "target_datasets": [
+        "model_to_import"
+      ],
+      "id": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/local_dependency/models/model_to_import.sql:model_to_import"
+    }
+  ],
+  "edges": [
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        27
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/core/dbt/include/starter_project/models/example/my_first_dbt_model.sql:my_first_dbt_model",
+      "target": "my_first_dbt_model"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "my_first_dbt_model",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/core/dbt/include/starter_project/models/example/my_second_dbt_model.sql:my_second_dbt_model"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        27
+      ],
+      "source": "source_data",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/core/dbt/include/starter_project/models/example/my_first_dbt_model.sql:my_first_dbt_model"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        1
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/analyses/a.sql:a",
+      "target": "a"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "a",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/inverted_ref_dependency/models/b.sql:b"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        1
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/tests/t.sql:t",
+      "target": "t"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        1
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/functions/area_of_circle.sql:area_of_circle",
+      "target": "area_of_circle"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        12
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/snapshots/snapshot.sql:snapshot",
+      "target": "snapshot"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        12
+      ],
+      "source": "seed",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/snapshots/snapshot.sql:snapshot"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        7
+      ],
+      "source": "seed",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/data/update.sql:update"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        586
+      ],
+      "source": "seed",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/data/seed.sql:seed"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        82
+      ],
+      "source": "seed",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_cn.sql:seed_cn"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        82
+      ],
+      "source": "seed",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_dbt_valid_to.sql:seed_dbt_valid_to"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        261
+      ],
+      "source": "seed",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/update.sql:update"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        223
+      ],
+      "source": "seed",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_pg.sql:seed_pg"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        27
+      ],
+      "source": "seed",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/invalidate_postgres.sql:invalidate_postgres"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "seed",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/incremental.sql:incremental"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "seed",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/model_to_unit_test.sql:model_to_unit_test"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "seed",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/local_dependency/models/model_to_import.sql:model_to_import"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        14
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/macros/expression_is_true.sql:expression_is_true",
+      "target": "expression_is_true"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        14
+      ],
+      "source": "model",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/macros/expression_is_true.sql:expression_is_true"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        80
+      ],
+      "source": "model",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/shared_macros.sql:shared_macros"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        2
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/metricflow_time_spine.sql:metricflow_time_spine",
+      "target": "metricflow_time_spine"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        1
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/snapshot_source.sql:snapshot_source",
+      "target": "snapshot_source"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        12
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/incremental.sql:incremental",
+      "target": "incremental"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        12
+      ],
+      "source": "this",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/incremental.sql:incremental"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        2
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/metricflow_time_spine_second.sql:metricflow_time_spine_second",
+      "target": "metricflow_time_spine_second"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        7
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/data/update.sql:update",
+      "target": "update"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        586
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/data/seed.sql:seed",
+      "target": "seed"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        1
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/nested_dependency/models/model.sql:model",
+      "target": "model"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        82
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_cn.sql:seed_cn",
+      "target": "seed_cn"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        82
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_dbt_valid_to.sql:seed_dbt_valid_to",
+      "target": "seed_dbt_valid_to"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        80
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/shared_macros.sql:shared_macros",
+      "target": "shared_macros"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        80
+      ],
+      "source": "validation_errors",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/shared_macros.sql:shared_macros"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        80
+      ],
+      "source": "calc",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/shared_macros.sql:shared_macros"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        80
+      ],
+      "source": "window_functions",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/shared_macros.sql:shared_macros"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        80
+      ],
+      "source": "base",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/shared_macros.sql:shared_macros"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        261
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/update.sql:update",
+      "target": "update"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        223
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/seed_pg.sql:seed_pg",
+      "target": "seed_pg"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        27
+      ],
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/invalidate_postgres.sql:invalidate_postgres",
+      "target": "invalidate_postgres"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        27
+      ],
+      "source": "snapshot_alvarez_expected",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/invalidate_postgres.sql:invalidate_postgres"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        27
+      ],
+      "source": "snapshot_castillo_expected",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/invalidate_postgres.sql:invalidate_postgres"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        27
+      ],
+      "source": "snapshot_expected",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/invalidate_postgres.sql:invalidate_postgres"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        27
+      ],
+      "source": "snapshot_kelly_expected",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/snapshots/data/invalidate_postgres.sql:invalidate_postgres"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "source": "/home/neba/tenx/week4/repos/dbt-core/core/dbt/include/starter_project/models/example/my_second_dbt_model.sql:my_second_dbt_model",
+      "target": "my_second_dbt_model"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/model_with_lots_of_schema_configs.sql:model_with_lots_of_schema_configs",
+      "target": "model_with_lots_of_schema_configs"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "ephemeral",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/model_with_lots_of_schema_configs.sql:model_with_lots_of_schema_configs"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "ephemeral",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/outer.sql:outer"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/model_to_unit_test.sql:model_to_unit_test",
+      "target": "model_to_unit_test"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/outer.sql:outer",
+      "target": "outer"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "outer",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/sub/inner.sql:inner"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/fixtures/happy_path_project/models/sub/inner.sql:inner",
+      "target": "inner"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/models_local/my_configured_model.sql:my_configured_model",
+      "target": "my_configured_model"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "model_to_import",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/models_local/my_configured_model.sql:my_configured_model"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "model_to_import",
+      "target": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/models_local/my_model.sql:my_model"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/models_local/my_model.sql:my_model",
+      "target": "my_model"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/inverted_ref_dependency/models/b.sql:b",
+      "target": "b"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "source": "/home/neba/tenx/week4/repos/dbt-core/tests/functional/dependencies/local_dependency/models/model_to_import.sql:model_to_import",
+      "target": "model_to_import"
+    }
+  ]
+}

@@ -1,0 +1,752 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_locations.sql:stg_locations",
+      "source_file": "models/staging/stg_locations.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "renamed",
+        "source"
+      ],
+      "target_datasets": [
+        "stg_locations"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_locations.sql:stg_locations"
+    },
+    {
+      "name": "stg_locations",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "stg_locations"
+    },
+    {
+      "name": "renamed",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "renamed"
+    },
+    {
+      "name": "source",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "source"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_orders.sql:stg_orders",
+      "source_file": "models/staging/stg_orders.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "renamed",
+        "source"
+      ],
+      "target_datasets": [
+        "stg_orders"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_orders.sql:stg_orders"
+    },
+    {
+      "name": "stg_orders",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "stg_orders"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_order_items.sql:stg_order_items",
+      "source_file": "models/staging/stg_order_items.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "renamed",
+        "source"
+      ],
+      "target_datasets": [
+        "stg_order_items"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_order_items.sql:stg_order_items"
+    },
+    {
+      "name": "stg_order_items",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "stg_order_items"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_products.sql:stg_products",
+      "source_file": "models/staging/stg_products.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "renamed",
+        "source"
+      ],
+      "target_datasets": [
+        "stg_products"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_products.sql:stg_products"
+    },
+    {
+      "name": "stg_products",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "stg_products"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_supplies.sql:stg_supplies",
+      "source_file": "models/staging/stg_supplies.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "renamed",
+        "source"
+      ],
+      "target_datasets": [
+        "stg_supplies"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_supplies.sql:stg_supplies"
+    },
+    {
+      "name": "stg_supplies",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "stg_supplies"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_customers.sql:stg_customers",
+      "source_file": "models/staging/stg_customers.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "renamed",
+        "source"
+      ],
+      "target_datasets": [
+        "stg_customers"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_customers.sql:stg_customers"
+    },
+    {
+      "name": "stg_customers",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "stg_customers"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/metricflow_time_spine.sql:metricflow_time_spine",
+      "source_file": "models/marts/metricflow_time_spine.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [],
+      "target_datasets": [
+        "metricflow_time_spine"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/metricflow_time_spine.sql:metricflow_time_spine"
+    },
+    {
+      "name": "metricflow_time_spine",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "metricflow_time_spine"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/locations.sql:locations",
+      "source_file": "models/marts/locations.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "locations"
+      ],
+      "target_datasets": [
+        "locations"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/locations.sql:locations"
+    },
+    {
+      "name": "locations",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "locations"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/supplies.sql:supplies",
+      "source_file": "models/marts/supplies.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "supplies"
+      ],
+      "target_datasets": [
+        "supplies"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/supplies.sql:supplies"
+    },
+    {
+      "name": "supplies",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "supplies"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items",
+      "source_file": "models/marts/order_items.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "supplies",
+        "joined",
+        "orders",
+        "order_supplies_summary",
+        "order_items",
+        "products"
+      ],
+      "target_datasets": [
+        "order_items"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items"
+    },
+    {
+      "name": "order_items",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "order_items"
+    },
+    {
+      "name": "joined",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "joined"
+    },
+    {
+      "name": "orders",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "orders"
+    },
+    {
+      "name": "order_supplies_summary",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "order_supplies_summary"
+    },
+    {
+      "name": "products",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "products"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/customers.sql:customers",
+      "source_file": "models/marts/customers.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "joined",
+        "customer_orders_summary",
+        "customers",
+        "orders"
+      ],
+      "target_datasets": [
+        "customers"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/customers.sql:customers"
+    },
+    {
+      "name": "customers",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "customers"
+    },
+    {
+      "name": "customer_orders_summary",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "customer_orders_summary"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/products.sql:products",
+      "source_file": "models/marts/products.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "products"
+      ],
+      "target_datasets": [
+        "products"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/products.sql:products"
+    },
+    {
+      "transform_id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/orders.sql:orders",
+      "source_file": "models/marts/orders.sql",
+      "transformation_type": "sql",
+      "node_type": "transformation",
+      "source_datasets": [
+        "customer_order_count",
+        "orders",
+        "compute_booleans",
+        "order_items",
+        "order_items_summary"
+      ],
+      "target_datasets": [
+        "orders"
+      ],
+      "id": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/orders.sql:orders"
+    },
+    {
+      "name": "customer_order_count",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "customer_order_count"
+    },
+    {
+      "name": "compute_booleans",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "compute_booleans"
+    },
+    {
+      "name": "order_items_summary",
+      "storage_type": "table",
+      "node_type": "dataset",
+      "id": "order_items_summary"
+    }
+  ],
+  "edges": [
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        29
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_locations.sql:stg_locations",
+      "target": "stg_locations"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "stg_locations",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/locations.sql:locations"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        29
+      ],
+      "source": "renamed",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_locations.sql:stg_locations"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        33
+      ],
+      "source": "renamed",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_orders.sql:stg_orders"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        22
+      ],
+      "source": "renamed",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_order_items.sql:stg_order_items"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        34
+      ],
+      "source": "renamed",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_products.sql:stg_products"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        31
+      ],
+      "source": "renamed",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_supplies.sql:stg_supplies"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        23
+      ],
+      "source": "renamed",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_customers.sql:stg_customers"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        29
+      ],
+      "source": "source",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_locations.sql:stg_locations"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        33
+      ],
+      "source": "source",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_orders.sql:stg_orders"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        22
+      ],
+      "source": "source",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_order_items.sql:stg_order_items"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        34
+      ],
+      "source": "source",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_products.sql:stg_products"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        31
+      ],
+      "source": "source",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_supplies.sql:stg_supplies"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        23
+      ],
+      "source": "source",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_customers.sql:stg_customers"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        33
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_orders.sql:stg_orders",
+      "target": "stg_orders"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "stg_orders",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "stg_orders",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/orders.sql:orders"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        22
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_order_items.sql:stg_order_items",
+      "target": "stg_order_items"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "stg_order_items",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        34
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_products.sql:stg_products",
+      "target": "stg_products"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "stg_products",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "stg_products",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/products.sql:products"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        31
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_supplies.sql:stg_supplies",
+      "target": "stg_supplies"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "stg_supplies",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/supplies.sql:supplies"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "stg_supplies",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        23
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/staging/stg_customers.sql:stg_customers",
+      "target": "stg_customers"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "source": "stg_customers",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/customers.sql:customers"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        19
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/metricflow_time_spine.sql:metricflow_time_spine",
+      "target": "metricflow_time_spine"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        9
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/locations.sql:locations",
+      "target": "locations"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        9
+      ],
+      "source": "locations",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/locations.sql:locations"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        9
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/supplies.sql:supplies",
+      "target": "supplies"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        9
+      ],
+      "source": "supplies",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/supplies.sql:supplies"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        66
+      ],
+      "source": "supplies",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        66
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items",
+      "target": "order_items"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        66
+      ],
+      "source": "order_items",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        77
+      ],
+      "source": "order_items",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/orders.sql:orders"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        66
+      ],
+      "source": "joined",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        58
+      ],
+      "source": "joined",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/customers.sql:customers"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        66
+      ],
+      "source": "orders",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        58
+      ],
+      "source": "orders",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/customers.sql:customers"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        77
+      ],
+      "source": "orders",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/orders.sql:orders"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        66
+      ],
+      "source": "order_supplies_summary",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        66
+      ],
+      "source": "products",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/order_items.sql:order_items"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        9
+      ],
+      "source": "products",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/products.sql:products"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        58
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/customers.sql:customers",
+      "target": "customers"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        58
+      ],
+      "source": "customers",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/customers.sql:customers"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        58
+      ],
+      "source": "customer_orders_summary",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/customers.sql:customers"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        9
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/products.sql:products",
+      "target": "products"
+    },
+    {
+      "edge_type": "PRODUCES",
+      "line_range": [
+        1,
+        77
+      ],
+      "source": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/orders.sql:orders",
+      "target": "orders"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        77
+      ],
+      "source": "customer_order_count",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/orders.sql:orders"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        77
+      ],
+      "source": "compute_booleans",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/orders.sql:orders"
+    },
+    {
+      "edge_type": "CONSUMES",
+      "line_range": [
+        1,
+        77
+      ],
+      "source": "order_items_summary",
+      "target": "/home/neba/tenx/week4/repos/jaffle-shop/models/marts/orders.sql:orders"
+    }
+  ]
+}
