@@ -4,6 +4,16 @@
   "graph": {},
   "nodes": [
     {
+      "path": ".pre-commit-config.yaml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "pagerank": 0.045455,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": ".pre-commit-config.yaml"
+    },
+    {
       "path": ".github/workflows/scripts/dbt_cloud_run_job.py",
       "language": "python",
       "node_type": "module",
@@ -212,16 +222,6 @@
       "in_cycle": false,
       "is_dead_code_candidate": false,
       "id": "models/marts/orders.yml"
-    },
-    {
-      "path": ".pre-commit-config.yaml",
-      "language": "yaml",
-      "node_type": "module",
-      "change_velocity_30d": 0,
-      "pagerank": 0.045455,
-      "in_cycle": false,
-      "is_dead_code_candidate": false,
-      "id": ".pre-commit-config.yaml"
     }
   ],
   "edges": []
