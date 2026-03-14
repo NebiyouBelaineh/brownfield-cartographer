@@ -4,6 +4,26 @@
   "graph": {},
   "nodes": [
     {
+      "path": "backup/templates/pdf-metadata.yaml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "backup/templates/pdf-metadata.yaml"
+    },
+    {
+      "path": "backup/templates/pdf-metadata-final.yaml",
+      "language": "yaml",
+      "node_type": "module",
+      "change_velocity_30d": 0,
+      "pagerank": 0.014112,
+      "in_cycle": false,
+      "is_dead_code_candidate": false,
+      "id": "backup/templates/pdf-metadata-final.yaml"
+    },
+    {
       "path": "scripts/md_to_pdf.py",
       "language": "python",
       "node_type": "module",
@@ -215,7 +235,7 @@
       "path": "src/cli.py",
       "language": "python",
       "node_type": "module",
-      "change_velocity_30d": 3,
+      "change_velocity_30d": 4,
       "pagerank": 0.014112,
       "in_cycle": false,
       "is_dead_code_candidate": true,
@@ -237,7 +257,7 @@
       "path": "src/agents/hydrologist.py",
       "language": "python",
       "node_type": "module",
-      "change_velocity_30d": 2,
+      "change_velocity_30d": 3,
       "pagerank": 0.014112,
       "in_cycle": false,
       "is_dead_code_candidate": true,
@@ -268,26 +288,6 @@
       "in_cycle": false,
       "is_dead_code_candidate": false,
       "id": "src/models/graph.py"
-    },
-    {
-      "path": "backup/templates/pdf-metadata.yaml",
-      "language": "yaml",
-      "node_type": "module",
-      "change_velocity_30d": 0,
-      "pagerank": 0.014112,
-      "in_cycle": false,
-      "is_dead_code_candidate": false,
-      "id": "backup/templates/pdf-metadata.yaml"
-    },
-    {
-      "path": "backup/templates/pdf-metadata-final.yaml",
-      "language": "yaml",
-      "node_type": "module",
-      "change_velocity_30d": 0,
-      "pagerank": 0.014112,
-      "in_cycle": false,
-      "is_dead_code_candidate": false,
-      "id": "backup/templates/pdf-metadata-final.yaml"
     }
   ],
   "edges": [

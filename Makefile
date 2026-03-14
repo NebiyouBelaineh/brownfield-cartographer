@@ -8,8 +8,8 @@
 #   make pdf INPUT=... OUTPUT=...      # custom paths
 #   make pdf INPUT=reports/final_report-diagram.md OUTPUT=reports/final_report-diagram.pdf SKIP_MERMAID=1  # diagrams already rendered
 
-INPUT  ?= docs/reports/cartographer-interim-report.md
-OUTPUT ?= docs/reports/cartographer-interim-report.pdf
+INPUT  ?= docs/reports/cartographer-final-report.md
+OUTPUT ?= docs/reports/cartographer-final-report.pdf
 METADATA ?= backup/templates/pdf-metadata.yaml
 BUILD_DIR ?= $(dir $(OUTPUT))
 MERMAID_SCALE ?= 2.0
@@ -24,7 +24,7 @@ help:
 	@echo "Markdown to PDF (Mermaid → images, then Pandoc)"
 	@echo ""
 	@echo "  make pdf              Build PDF from ${INPUT} → ${OUTPUT}"
-# 	@echo "  make pdf-modern       Build PDF from docs/reports/interim-report.md → docs/reports/interim-report-modern.pdf (modern template)"
+# 	@echo "  make pdf-modern       Build PDF from docs/reports/final-report.md → docs/reports/final-report-modern.pdf (modern template)"
 	@echo "  make pdf INPUT=<.md> OUTPUT=<.pdf>   Custom input and output"
 	@echo "  make check-deps       Verify pandoc and mermaid-cli are available"
 	@echo "  make clean            Remove generated diagrams and processed markdown under build dirs"

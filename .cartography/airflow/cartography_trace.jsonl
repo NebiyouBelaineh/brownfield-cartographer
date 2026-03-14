@@ -16,3 +16,5 @@
 {"timestamp": "2026-03-13T18:26:58.124275+00:00", "agent": "Orchestrator", "action": "stage_start", "confidence": "high", "evidence_source": "static_analysis", "details": {"stage": "Hydrologist"}}
 {"timestamp": "2026-03-13T18:27:15.188467+00:00", "agent": "Hydrologist", "action": "survey_complete", "confidence": "high", "evidence_source": "static_analysis", "details": {"lineage_nodes": 436, "lineage_edges": 465}}
 {"timestamp": "2026-03-13T18:27:15.188734+00:00", "agent": "Orchestrator", "action": "stage_start", "confidence": "high", "evidence_source": "static_analysis", "details": {"stage": "Semanticist"}}
+{"timestamp": "2026-03-14T19:54:04.143755+00:00", "agent": "Orchestrator", "action": "pipeline_start", "confidence": "high", "evidence_source": "static_analysis", "details": {"repo_path": "/home/neba/tenx/week4/repos/airflow", "output_dir": ".cartography/airflow", "run_llm": true, "incremental": false}}
+{"timestamp": "2026-03-14T19:54:04.159186+00:00", "agent": "Orchestrator", "action": "stage_start", "confidence": "high", "evidence_source": "static_analysis", "details": {"stage": "Surveyor"}}
