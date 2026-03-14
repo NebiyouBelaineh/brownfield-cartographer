@@ -249,8 +249,13 @@ def blast_radius(
             module_path_resolved = module_path
 
     lineage_deps: list[str] = []
-    if G_lin.has_node(module_path):
-        lineage_deps = list(nx.descendants(G_lin, module_path))
+    lin_node = module_path
+    if not G_lin.has_node(lin_node):
+        matches = [n for n in G_lin.nodes() if module_path.lower() in n.lower()]
+        if matches:
+            lin_node = matches[0]
+    if G_lin.has_node(lin_node):
+        lineage_deps = list(nx.descendants(G_lin, lin_node))
 
     return {
         "module": module_path,
